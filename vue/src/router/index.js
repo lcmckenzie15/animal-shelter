@@ -1,4 +1,4 @@
-import { createRouter as createRouter, createWebHistory } from 'vue-router'
+ import { createRouter as createRouter, createWebHistory } from 'vue-router'
 import { useStore } from 'vuex'
 
 // Import components
