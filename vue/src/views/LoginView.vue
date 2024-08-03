@@ -1,4 +1,7 @@
 <template>
+<div id="logo">
+<img src="../Pictures/logo.png" alt="logo">
+</div>
   <div id="login">
     <form v-on:submit.prevent="login">
       <h1 >Please Sign In</h1>
@@ -22,6 +25,8 @@
     </form>
   </div>
 </template>
+
+
 
 <script>
 import authService from "../services/AuthService";
@@ -84,4 +89,32 @@ label {
 #register{
   color: var(--text-color);
 }
+
+img{
+  width: 700px;
+  height: auto;
+  text-align: center;
+  
+}
+
+h1{
+  color: var(--primary-color);
+
+}
+
+button:hover{
+  color: var(--accent-color);
+}
+
+.form-input-group {
+  color: var(--text-color);
+}
+
+#login {
+  margin: 0 auto;
+  width: 300px;
+  font-size: 22px;
+}
+
+
 </style>
