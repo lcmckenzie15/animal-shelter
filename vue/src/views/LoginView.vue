@@ -12,16 +12,16 @@
         Thank you for registering, please sign in.
       </div>
       <div class="form-input-group">
-        <label for="username">Email</label>
+        <label for="username">Email:</label>
         <input type="text" id="username" v-model="user.username" required autofocus />
       </div>
       <div class="form-input-group">
-        <label for="password">Password</label>
+        <label for="password">Password:</label>
         <input type="password" id="password" v-model="user.password" required />
       </div>
       <button type="submit">Sign in</button>
-      <p>
-      <router-link id="register" v-bind:to="{ name: 'register' }">Want to volunteer? Sign up.</router-link></p>
+      <p id="volunteer-btn">Want to volunteer?<router-link id="register" v-bind:to="{ name: 'register' }">Apply!</router-link></p>
+      
     </form>
   </div>
 </template>
@@ -67,54 +67,68 @@ export default {
 
 <style scoped>
 :root {
-    --primary-color: #607D8B;
-   
-    --secondary-color: #CFD8DC;
-    
-    --accent-color: #FF5722;
-    
-    --background-color: #ECEFF1;
-
-    --text-color: #263238;
-    
+  --primary-color: #607D8B;
+  --secondary-color: #CFD8DC;
+  --accent-color: #FF5722;
+  --background-color: #ECEFF1;
+  --text-color: #263238;
 }
 
-.form-input-group {
-  margin-bottom: 1rem;
-}
-label {
-  margin-right: 0.5rem;
+#volunteer-btn #register{
+color: var(--accent-color);
+margin-left: 10px;
 }
 
-#register{
-  color: var(--text-color);
+#volunteer-btn #register:hover{
+  text-decoration: underline;
+
 }
 
-img{
+#logo {
+  text-align: center;
+  margin-bottom: 10px; 
+}
+
+img {
   width: 700px;
   height: auto;
-  text-align: center;
-  
-}
-
-h1{
-  color: var(--primary-color);
-
-}
-
-button:hover{
-  color: var(--accent-color);
-}
-
-.form-input-group {
-  color: var(--text-color);
 }
 
 #login {
   margin: 0 auto;
   width: 300px;
   font-size: 22px;
+  margin-top: -110px; 
+  padding-left: 32px;
+}
+
+h1 {
+  color: var(--primary-color);
+  margin-bottom: 10px; 
+}
+
+button:hover {
+  color: var(--accent-color);
+}
+
+button {
+ display: flex;
+margin-left: 95px;
+font-size: 20px;
+margin-top: 30px;
 }
 
 
+.form-input-group {
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+label {
+  margin-right: 0.5rem;
+}
+
+#register {
+  color: var(--text-color);
+}
 </style>
