@@ -1,30 +1,32 @@
 <template>
+  <div id="logo">
+<img src="../Pictures/logo.png" alt="logo">
+</div>
   <div id="register" class="text-center">
     <form v-on:submit.prevent="register">
-      <h1>Create Account</h1>
+      <h1>Volunteer Application</h1>
       <div role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
       <div class="form-input-group">
-        <label for="username">Username</label>
+        <label for="username">Email:</label>
         <input type="text" id="username" v-model="user.username" required autofocus />
       </div>
       <div class="form-input-group">
-        <label for="password">Password</label>
+        <label for="password">Password:</label>
         <input type="password" id="password" v-model="user.password" required />
       </div>
       <div class="form-input-group">
-        <label for="confirmPassword">Confirm Password</label>
+        <label for="confirmPassword">Confirm Password:</label>
         <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
       </div>
-      <button type="submit">Create Account</button>
-      <p><router-link v-bind:to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
+      <button type="submit">Apply</button>
+      <p id="login-btn">Already have an account?<router-link id="router-two" v-bind:to="{ name: 'login' }">Log in.</router-link></p>
     </form>
   </div>
 </template>
 
-<!-- testing -->
-<!-- test 2 -->
+
 
 <script>
 import authService from '../services/AuthService';
@@ -76,10 +78,74 @@ export default {
 </script>
 
 <style scoped>
+:root {
+  --primary-color: #607D8B;
+  --secondary-color: #CFD8DC;
+  --accent-color: #FF5722;
+  --background-color: #ECEFF1;
+  --text-color: #263238;
+}
+
+#login-btn {
+  color: var(--text-color);
+ margin-left: 40px;
+}
+
+#login-btn #router-two{
+color: var(--accent-color);
+margin-left: 10px;
+}
+
+#login-btn #router-two:hover{
+  text-decoration: underline;
+
+}
+
+#logo {
+  text-align: center;
+  margin-bottom: 10px; 
+}
+
+img {
+  width: 700px;
+  height: auto;
+}
+
+#register {
+  margin: 0 auto;
+  width: 500px;
+  font-size: 22px;
+  margin-top: -110px; 
+  padding-left: 100px;
+}
+
+h1 {
+  color: var(--primary-color);
+  margin-bottom: 10px; 
+}
+
+button:hover {
+  color: var(--accent-color);
+}
+
+button {
+ display: flex;
+margin-left: 160px;
+font-size: 20px;
+margin-top: 30px;
+}
+
+
 .form-input-group {
   margin-bottom: 1rem;
+  color: var(--text-color);
 }
+
 label {
   margin-right: 0.5rem;
+}
+
+#register {
+  color: var(--text-color);
 }
 </style>
