@@ -13,18 +13,34 @@
 <style>
 :root {
     --primary-color: #607D8B;
-    /* Primary Color */
+   
     --secondary-color: #CFD8DC;
-    /* Secondary Color */
-    --accent-color: #CFD8DC;
-    /* Accent Color */
-    --background-color: #CFD8DC;
-    /* Background Color */
+    
+    --accent-color: #FF5722;
+    
+    --background-color: #ECEFF1;
+
+    --text-color: #263238;
+    
 }
 
 #nav {
   background-color: var(--primary-color);
   color: #CFD8DC;
+}
+
+a{
+  color: var(--background-color);
+  text-decoration: none;
+}
+
+a:visited{
+  color: var(--background-color);
+  text-decoration: none;
+}
+
+a:hover{
+  color: var(--accent-color);
 }
 
 </style>

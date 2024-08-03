@@ -9,7 +9,7 @@
         Thank you for registering, please sign in.
       </div>
       <div class="form-input-group">
-        <label for="username">Username</label>
+        <label for="username">Email</label>
         <input type="text" id="username" v-model="user.username" required autofocus />
       </div>
       <div class="form-input-group">
@@ -18,7 +18,7 @@
       </div>
       <button type="submit">Sign in</button>
       <p>
-      <router-link v-bind:to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
+      <router-link id="register" v-bind:to="{ name: 'register' }">Want to volunteer? Sign up.</router-link></p>
     </form>
   </div>
 </template>
@@ -61,10 +61,27 @@ export default {
 </script>
 
 <style scoped>
+:root {
+    --primary-color: #607D8B;
+   
+    --secondary-color: #CFD8DC;
+    
+    --accent-color: #FF5722;
+    
+    --background-color: #ECEFF1;
+
+    --text-color: #263238;
+    
+}
+
 .form-input-group {
   margin-bottom: 1rem;
 }
 label {
   margin-right: 0.5rem;
+}
+
+#register{
+  color: var(--text-color);
 }
 </style>
