@@ -24,6 +24,7 @@
 </template>
 
 <!-- testing -->
+<!-- test 2 -->
 
 <script>
 import authService from '../services/AuthService';
