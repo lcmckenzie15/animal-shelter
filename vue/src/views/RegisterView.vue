@@ -23,6 +23,8 @@
   </div>
 </template>
 
+<!-- testing -->
+
 <script>
 import authService from '../services/AuthService';
 
