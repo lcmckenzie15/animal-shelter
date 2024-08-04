@@ -2,27 +2,15 @@
   <div id="capstone-app">
     <div id="nav">
       <router-link v-bind:to="{ name: 'home' }">
-        <img :src="logo" alt="logo" class="logo" />
+        <img src="../Pictures/home-logo.png" alt="Home" class="home-logo">
       </router-link>
-      <router-link v-bind:to="{ name: 'adopt' }">Adopt</router-link>&nbsp;|&nbsp;
+      <router-link v-bind:to="{ name: 'home' }">Adopt</router-link>&nbsp;|&nbsp;
       <router-link v-bind:to="{ name: 'volunteer' }">Volunteer</router-link>&nbsp;|&nbsp;
       <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
     </div>
     <router-view />
   </div>
 </template>
-
-<script>
-import logo from '@/assets/logo.png';
-
-export default {
-  data() {
-    return {
-      logo
-    };
-  }
-};
-</script>
 
 <style>
 :root {
@@ -36,22 +24,22 @@ export default {
 
     --text-color: #263238;
 }
-
-.logo {
-  width: 100px; /* Adjust size as needed */
-  height: auto; /* Maintain aspect ratio */
-}
-
-
 #nav {
   background-color: var(--primary-color);
-  color: #CFD8DC;
+  color: var(--secondary-color);
   font-size: 25px;
-  padding: 100px 300px 20px; 
+  padding: 20px 300px; 
   display: flex; 
   gap: 20px; 
-  align-items: center; /* Vertically align items */
+  align-items: center; 
 }
+
+.home-logo {
+  width: 100px;
+  height: auto;
+cursor: pointer;
+}
+
 
 a {
   color: var(--background-color);

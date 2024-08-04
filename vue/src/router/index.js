@@ -1,4 +1,4 @@
- import { createRouter as createRouter, createWebHistory } from 'vue-router'
+import { createRouter as createRouter, createWebHistory } from 'vue-router'
 import { useStore } from 'vuex'
 
 // Import components
@@ -6,6 +6,7 @@ import HomeView from '../views/HomeView.vue';
 import LoginView from '../views/LoginView.vue';
 import LogoutView from '../views/LogoutView.vue';
 import RegisterView from '../views/RegisterView.vue';
+import VolunteerView from '../views/VolunteerView.vue';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -41,6 +42,14 @@ const routes = [
     }
   },
   {
+    path: '/volunteer',
+    name: 'volunteer',
+    component: VolunteerView,
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
     path: "/register",
     name: "register",
     component: RegisterView,
@@ -66,7 +75,7 @@ router.beforeEach((to) => {
 
   // If it does and they are not logged in, send the user to "/login"
   if (requiresAuth && store.state.token === '') {
-    return {name: "login"};
+    return { name: "login" };
   }
   // Otherwise, do nothing and they'll go to their next destination
 });
