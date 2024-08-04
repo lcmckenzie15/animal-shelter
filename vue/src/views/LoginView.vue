@@ -90,7 +90,7 @@ margin-left: 10px;
 }
 
 img {
-  width: 700px;
+  width: 600px;
   height: auto;
 }
 
@@ -98,8 +98,8 @@ img {
   margin: 0 auto;
   width: 300px;
   font-size: 22px;
-  margin-top: -110px; 
-  padding-left: 32px;
+  margin-top: -70px; 
+  padding-left: 26px;
 }
 
 h1 {
@@ -109,13 +109,18 @@ h1 {
 
 button:hover {
   color: var(--accent-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+  transform: translateY(-5px);
 }
 
 button {
  display: flex;
 margin-left: 95px;
 font-size: 20px;
-margin-top: 30px;
+margin-top: 20px;
+margin-bottom: 10px;
+cursor: pointer; 
+  transition: all 0.3s ease; 
 }
 
 

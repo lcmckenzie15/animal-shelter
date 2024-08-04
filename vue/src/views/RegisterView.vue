@@ -39,6 +39,7 @@ export default {
         password: '',
         confirmPassword: '',
         role: 'user',
+        
       },
       registrationErrors: false,
       registrationErrorMsg: 'There were problems registering this user.',
@@ -88,13 +89,16 @@ export default {
 
 #login-btn {
   color: var(--text-color);
- margin-left: 40px;
+ margin-left: -18px;
+ margin-top: 15px;
 }
 
 #login-btn #router-two{
 color: var(--accent-color);
-margin-left: 10px;
+margin-left: 5px;
 }
+
+
 
 #login-btn #router-two:hover{
   text-decoration: underline;
@@ -107,16 +111,16 @@ margin-left: 10px;
 }
 
 img {
-  width: 700px;
+  width: 600px;
   height: auto;
 }
 
 #register {
   margin: 0 auto;
-  width: 500px;
+  width: 300px;
   font-size: 22px;
-  margin-top: -110px; 
-  padding-left: 100px;
+  margin-top: -80px; 
+ 
 }
 
 h1 {
@@ -126,13 +130,17 @@ h1 {
 
 button:hover {
   color: var(--accent-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+  transform: translateY(-5px);
 }
 
 button {
  display: flex;
-margin-left: 160px;
+margin-left: 116px;
 font-size: 20px;
 margin-top: 30px;
+cursor: pointer; 
+  transition: all 0.3s ease; 
 }
 
 
