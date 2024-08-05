@@ -1,14 +1,16 @@
 <template>
   <div id="capstone-app">
-    <img src="@/Pictures/logo.png" alt="Home" class="logo" @click="goHome">
-    <div id="nav" class="navbar navbar-expand-sm bg-light navbar-light">
-      <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
-      <router-link v-bind:to="{ name: 'home' }">Adopt</router-link>&nbsp;|&nbsp;
-      <router-link v-bind:to="{ name: 'volunteer' }">Volunteer</router-link>
-      <router-link class="login-link" v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''">Login</router-link>
-      <router-link class="login-link" v-bind:to="{ name: 'logout' }"
-        v-if="$store.state.token != ''">Logout</router-link>
-    </div>
+    <nav id="nav" class="navbar navbar-expand-sm" style="background-color: #ECEFF1;">
+      <img src="@/Pictures/logo1.png" alt="Home" style="width:200px; background-color: #ECEFF1;" class="p-0"
+        @click="goHome">
+      <div class="d-flex justify-content-center">
+        <router-link class="nav-item" v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
+        <router-link class="nav-item" v-bind:to="{ name: 'home' }">Adopt</router-link>&nbsp;|&nbsp;
+        <router-link class="nav-item" v-bind:to="{ name: 'volunteer' }">Volunteer</router-link>&nbsp;|&nbsp;
+      </div>
+      <router-link class="nav-item" v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''">Login</router-link>
+      <router-link class="nav-item" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+    </nav>
     <router-view />
     <div class="container-fluid my-5 p-0">
       <footer class="text-center text-white mt-auto" style="background-color: #ECEFF1;">
@@ -50,7 +52,7 @@
   </div>
 </template>
 <style scoped>
-:root {
+/* :root {
   --primary-color: #607D8B;
   --secondary-color: #CFD8DC;
   --accent-color: #FF5722;
@@ -58,14 +60,14 @@
   --text-color: #263238;
 }
 
-/* #nav {
+#nav {
   background-color: var(--background-color);
   color: var(--text-color);
   font-size: 25px;
   padding: 5px;
   display: flex;
   align-items: center;
-} */
+}
 
 
 .logo {
@@ -76,11 +78,11 @@
 }
 
 
-/* .nav-links {
+.nav-links {
   display: flex;
   gap: 20px;
   flex-grow: 1;
-} */
+}
 
 
 a {
@@ -107,5 +109,5 @@ a:hover {
 
 .login-link:visited {
   color: var(--text-color);
-}
+} */
 </style>
