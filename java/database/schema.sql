@@ -33,7 +33,7 @@ CREATE TABLE pets (
     pet_id SERIAL,
     species varchar(3) NOT NULL,
     gender varchar(6) NOT NULL,
-    age(years) integer NOT NULL,
+    age integer NOT NULL,
     name varchar(25) NOT NULL,
     breed varchar(25) NOT NULL,
     pet_size varchar(25) NOT NULL,
