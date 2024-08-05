@@ -12,70 +12,39 @@
   </div>
   <div class="container-fluid my-5">
 
-<footer class="text-center text-white" style="background-color: #ECEFF1;">
-<!-- Grid container -->
-<div class="container pt-4">
-  <section class="mb-4">
-      <!-- Facebook -->
-      <a
-        class="btn btn-link btn-floating btn-lg m-1"
-        href="#!"
-        role="button"
-        data-mdb-ripple-color="dark"
-        ><i class="fab fa-facebook-f fa-2x" style="color: #3b5998;"></i></a>
-
-      <!-- Twitter -->
-      <a
-        class="btn btn-link btn-floating btn-lg text-dark m-1"
-        href="#!"
-        role="button"
-        data-mdb-ripple-color="dark"
-        ><i class="fab fa-twitter fa-2x" style="color: #55acee;"></i></a>
-
-      <!-- YouTube -->
-      <a
-        class="btn btn-link btn-floating btn-lg text-dark m-1"
-        href="#!"
-        role="button"
-        data-mdb-ripple-color="dark"
-        ><i class="fab fa-youtube fa-2x" style="color: #ed302f;"></i></a>
-
-      <!-- Instagram -->
-      <a
-        class="btn btn-link btn-floating btn-lg text-dark m-1"
-        href="#!"
-        role="button"
-        data-mdb-ripple-color="dark"
-        ><i class="fab fa-instagram fa-2x" style="color: #ac2bac;"></i></a>
-
-      <!-- Linkedin -->
-      <a
-        class="btn btn-link btn-floating btn-lg text-dark m-1"
-        href="#!"
-        role="button"
-        data-mdb-ripple-color="dark"
-        ><i class="fab fa-linkedin-in fa-2x" style="color: #0082ca;"></i></a>
-      <!-- Reddit -->
-      <a
-        class="btn btn-link btn-floating btn-lg text-dark m-1"
-        href="#!"
-        role="button"
-        data-mdb-ripple-color="dark"
-        ><i class="fab fa-reddit-alien fa-2x" style="color: #ff4500;"></i></a>
+    <footer class="text-center text-white mt-auto" style="background-color: #ECEFF1; width: 100%;">
+      <!-- Grid container -->
+      <div class="container pt-4">
+        <section class="mb-4">
+    <!--social media icons-->
+    <a class="btn btn-link btn-floating btn-lg m-1" href="#!" role="button" data-mdb-ripple-color="dark">
+            <i class="fab fa-facebook-f fa-2x" style="color: #3b5998;"></i>
+          </a>
+          <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button" data-mdb-ripple-color="dark">
+            <i class="fab fa-twitter fa-2x" style="color: #55acee;"></i>
+          </a>
+          <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button" data-mdb-ripple-color="dark">
+            <i class="fab fa-youtube fa-2x" style="color: #ed302f;"></i>
+          </a>
+          <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button" data-mdb-ripple-color="dark">
+            <i class="fab fa-instagram fa-2x" style="color: #ac2bac;"></i>
+          </a>
+          <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button" data-mdb-ripple-color="dark">
+            <i class="fab fa-linkedin-in fa-2x" style="color: #0082ca;"></i>
+          </a>
+          <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button" data-mdb-ripple-color="dark">
+            <i class="fab fa-reddit-alien fa-2x" style="color: #ff4500;"></i>
+          </a>
     </section>
 </div>
-<!-- Grid container -->
+ <!-- Copyright -->
+ <div class="text-center text-light p-3" style="background-color: #607D8B;">
+        TechElevator © 2024 Copyright
+      </div>
+    </footer>
 
-<!-- Copyright -->
-<div class="text-center text-light p-3" style="background-color: #607D8B;">
-  TechElevator © 2024 Copyright
-</div>
-<!-- Copyright -->
-</footer>
-
-</div>
+  </div>
 </template>
-
 <style>
 :root {
 	--primary-color: #607D8B;
@@ -88,7 +57,7 @@
   background-color: var(--background-color);
   color: var(--text-color);
   font-size: 25px;
-  padding: 5px, 5px;
+  padding: 5px;
   display: flex;
   align-items: center;
 }
