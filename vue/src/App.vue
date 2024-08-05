@@ -13,7 +13,7 @@
 </template>
 
 <style>
-:root {
+/* :root {
     --primary-color: #607D8B;
 
     --secondary-color: #CFD8DC;
@@ -53,6 +53,6 @@ a:visited {
 
 a:hover {
   color: var(--accent-color);
-}
+} */
 
 </style>
