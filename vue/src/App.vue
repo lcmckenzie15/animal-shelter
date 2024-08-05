@@ -1,9 +1,7 @@
 <template>
-  <div id="capstone-app">
+  <div id="capstone-app" >
     <div id="nav">
-      <router-link v-bind:to="{ name: 'home' }">
-        <img src="../Pictures/home-logo.png" alt="Home" class="home-logo">
-      </router-link>
+      <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
       <router-link v-bind:to="{ name: 'home' }">Adopt</router-link>&nbsp;|&nbsp;
       <router-link v-bind:to="{ name: 'volunteer' }">Volunteer</router-link>&nbsp;|&nbsp;
       <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
@@ -13,7 +11,7 @@
 </template>
 
 <style>
-/* :root {
+:root {
     --primary-color: #607D8B;
 
     --secondary-color: #CFD8DC;
@@ -53,6 +51,6 @@ a:visited {
 
 a:hover {
   color: var(--accent-color);
-} */
+}
 
 </style>
