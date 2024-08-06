@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Available Pets</h1>
-    <div class="pet-info">
+    <div class="pet-info container">
       <PetCard v-for="pet in pets" :pet="pet">
             <img :src="pet.profilePic" alt="Profile Picture">
       </PetCard>
