@@ -6,7 +6,7 @@
     </a>
       <div class="d-flex justify-content-center">
         <router-link class="nav-item" v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
-        <router-link class="nav-item" v-bind:to="{ name: 'home' }">Adopt</router-link>&nbsp;|&nbsp;
+        <router-link class="nav-item" v-bind:to="{ name: 'pets' }">Adopt</router-link>&nbsp;|&nbsp;
         <router-link class="nav-item" v-bind:to="{ name: 'volunteer' }">Volunteer</router-link>&nbsp;|&nbsp;
       </div>
       <router-link class="nav-item" v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''">Login</router-link>

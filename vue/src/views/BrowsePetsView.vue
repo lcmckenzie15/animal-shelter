@@ -1,31 +1,51 @@
 <template>
-    <div class="Browse-Pets-View">
-      <h1>Pets</h1>
-      <p>description</p>
-    
+  <div>
+    <h1>Available Pets</h1>
+    <div class="pet-info">
+      <PetCard v-for="pet in pets" :pet="pet">
+            <img :src="pet.profilePic" alt="Profile Picture">
+      </PetCard>
     </div>
-  </template>
+  </div>
+</template>
 
 <script>
+import PetCard from '../components/PetCard.vue';
+import petService from '../services/PetService.js';
 export default {
-  name: 'BrowsePetsView',
+  components: {
+    PetCard
+  },
+  data() {
+  return {
+    pets: [],
+    invalidCredentials: false
+  }
+  },
+  async mounted() {
+  try {
+    const response = await petService.getPets();
+    console.log('Fetched pets:', response.data);
+    this.pets = response.data;
+  } catch (error) {
+    console.error('Error fetching pets:', error);
+    this.invalidCredentials = true;
+  }
+}
 };
 </script>
 
 <style scoped>
-.volunteer-view {
-  padding: 20px;
-  font-family: Arial, sans-serif;
+.pet-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 h1 {
-  color: #FF5722; 
-  text-align: center
-  ;
-}
-
-p {
-  color: #263238; 
+  color: #000000;
   text-align: center;
-}
+};
+
 </style>
