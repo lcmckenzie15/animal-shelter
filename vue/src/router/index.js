@@ -8,6 +8,7 @@ import LogoutView from '../views/LogoutView.vue';
 import RegisterView from '../views/RegisterView.vue';
 import VolunteerView from '../views/VolunteerView.vue';
 import BrowsePetsView from '../views/BrowsePetsView.vue';
+// import RegistrationFormView from '../views/RegistrationFormView.vue';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -65,7 +66,15 @@ const routes = [
     meta: {
       requiresAuth: false
     }
-  }
+  },
+  // {
+  //   path: '/registration-form',
+  //   name: 'registration-form',
+  //   component: RegistrationFormView,
+  //   meta: {
+  //     requiresAuth: false
+  //   }
+  // }
 ];
 
 // Create the router
