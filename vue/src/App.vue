@@ -1,8 +1,9 @@
 <template>
   <div id="capstone-app">
     <nav id="nav" class="navbar navbar-expand-sm" style="background-color: #ECEFF1;">
-      <img src="@/Pictures/logo1.png" alt="Home" style="width:200px; background-color: #ECEFF1;" class="p-0"
-        @click="goHome">
+    <a href="/" id="home-page">
+      <img id="home-image" src="@/Pictures/logo1.png" alt="Home" style="width:200px; background-color: #ECEFF1;" class="p-0">
+    </a>
       <div class="d-flex justify-content-center">
         <router-link class="nav-item" v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
         <router-link class="nav-item" v-bind:to="{ name: 'home' }">Adopt</router-link>&nbsp;|&nbsp;
