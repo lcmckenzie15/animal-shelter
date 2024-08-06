@@ -2,9 +2,9 @@
   <div>
     <h1>Available Pets</h1>
     <div class="pet-info container">
-      <PetCard v-for="pet in pets" :pet="pet">
-            <img :src="pet.profilePic" alt="Profile Picture">
-      </PetCard>
+      <PetCard class="pet-card bg-image " style="background: hsla(14, 100%, 57%, 0.7)" v-for="pet in pets" :pet="pet">  
+        <img :src="pet.profilePic" alt="Profile Picture" class="w-100">
+      </PetCard >
     </div>
   </div>
 </template>
@@ -41,11 +41,24 @@ export default {
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 20px;
+  
+}
+
+.pet-card {
+  transition: transform 0.5s ease, box-shadow 0.3s ease; 
+  cursor: pointer; 
+}
+
+.pet-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+  transition: transform 0.5s ease, box-shadow 0.3s ease; 
 }
 
 h1 {
   color: #000000;
   text-align: center;
 };
+
 
 </style>
