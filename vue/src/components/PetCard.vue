@@ -1,4 +1,10 @@
 <template>
+  <!-- <div class="pet-card" v-if = "isAdopted">
+    <img :src="pet.profilePic" :alt="`${pet.name}'s profile picture`" class="pet-image"/>
+    <div class="pet-details">
+      <h2 class="pet-name">Adopted</h2>
+    </div> -->
+  <!-- </div> -->
   <div class="pet-card">
     <img :src="pet.profilePic" :alt="`${pet.name}'s profile picture`" class="pet-image"/>
     <div class="pet-details">
@@ -13,6 +19,15 @@ export default {
       type: Object,
       required: true
     }
+  },
+  methods: {
+    isAdopted() {
+      if (pet.adopted == true) {
+        return true;
+      } else {
+        return false;
+      }
+    },
   }
 };
 </script>

@@ -57,9 +57,9 @@ public class JdbcPetDao implements PetDao {
     @Override
     public Pet updatePetStatus(Pet pet) {
         Pet updatedPet = null;
-        final String sql = "UPDATE pets SET is_adopted = ? WHERE pet_id = ?";
+        final String sql = "UPDATE pets SET is_adopted = true WHERE pet_id = ?";
         try {
-            int numberOfRowsAffected = jdbcTemplate.update(sql, pet.isAdopted(), pet.getId());
+            int numberOfRowsAffected = jdbcTemplate.update(sql, pet.getId());
             if (numberOfRowsAffected == 0) {
                 throw new DaoException("Zero pets affected!!");
             } else {
@@ -85,7 +85,7 @@ public class JdbcPetDao implements PetDao {
         pet.setColor(rs.getString("color"));
         pet.setDescription(rs.getString("description"));
         pet.setProfilePic(rs.getString("profile_pic"));
-        pet.isAdopted();
+        pet.setAdopted(rs.getBoolean("is_adopted"));
         return pet;
     }
 }

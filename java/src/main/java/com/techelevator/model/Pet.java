@@ -115,7 +115,7 @@ public class Pet {
         return isAdopted;
     }
 
-    public void setAdopted(boolean adopted) {
-        isAdopted = adopted;
+    public void setAdopted(boolean isAdopted) {
+        this.isAdopted = isAdopted;
     }
 }

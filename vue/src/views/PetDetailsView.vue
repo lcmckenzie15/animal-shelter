@@ -144,6 +144,4 @@ tbody tr {
     background-color: #fff;
 }
 
-
-
 </style>
