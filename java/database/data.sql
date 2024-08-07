@@ -19,7 +19,7 @@ INSERT INTO pets(
 	species, gender, age, name, breed, pet_size, color, description, profile_pic, is_adopted)
 	VALUES ('Dog', 'Male', 2, 'Gus', 'Great Dane', 'X-Large', 'White, Black',
 	'Gus is always looking for someone to give him attention. He loves the feeling of someone petting him and showing him love. He will always be by your side, sometimes a little too much. He is a real couch potato getting small short bursts of energy throughout the day. When it comes to barking, it is only to alert his family of possible danger.',
-			'https://res.cloudinary.com/ddqchrxtm/image/upload/v1722966962/Gus-Dog_m3wsqb.jpg', false);
+			'https://res.cloudinary.com/dtennawyr/image/upload/v1723052943/Gus-Dog_ga7neg.jpg', false);
 
 INSERT INTO pets(
 	species, gender, age, name, breed, pet_size, color, description, profile_pic, is_adopted)
@@ -30,7 +30,7 @@ INSERT INTO pets(
 INSERT INTO pets(
 	species, gender, age, name, breed, pet_size, color, description, profile_pic, is_adopted)
 	VALUES ('Dog', 'Female', 1, 'Bynx', 'Great Dane', 'X-Large', 'Blue',
-			'Bynx is still a young puppy around 6 months old when making this listing. SInce she is still a puppy, she isn’t fully house trained and still learning. If you take this beautiful puppy home, you’ll get the full experience of raising your own puppy. She is big for her age, so expect a huge Great Dane when she is fully grown. She is still very energetic and full of curiosity during this phase of her life. In terms of her barking, she doesn’t bark much except to alert her family of possible danger.',
+			'Bynx is still a young puppy when making this listing. Since she is still a puppy, she isn’t fully house trained and still learning. If you take this beautiful puppy home, you’ll get the full experience of raising your own puppy. She is big for her age, so expect a huge Great Dane when she is fully grown. She is still very energetic and full of curiosity during this phase of her life. In terms of her barking, she doesn’t bark much except to alert her family of possible danger.',
 			'https://res.cloudinary.com/ddqchrxtm/image/upload/v1722969486/Bynx-Dog_p0alu6.jpg', false);
 
 INSERT INTO pets(
@@ -43,19 +43,19 @@ INSERT INTO pets(
 	species, gender, age, name, breed, pet_size, color, description, profile_pic, is_adopted)
 	VALUES ('Cat', 'Male', 2, 'Cinnamon', 'Bengal', 'Medium', 'Orange',
 			'Cinnamon is the ultimate furry friend, bursting with loyalty and love. After a rough start on the streets, he bounced back with a heart full of excitement and gratitude. Cinnamon’s always up for cuddles, can’t get enough of bubble baths, and is your go to buddy for fun outings. This lovable kitty will never leave your side and always knows the way back home. Ready for adventure? Cinnamon’s your perfect partner!',
-			'https://res.cloudinary.com/ddqchrxtm/image/upload/v1722966930/Cat_glqemn.png', false);
+			'https://res.cloudinary.com/dtennawyr/image/upload/v1723052942/Cinnamon_Cat_liotka.png', false);
 
 INSERT INTO pets(
 	species, gender, age, name, breed, pet_size, color, description, profile_pic, is_adopted)
 	VALUES ('Cat', 'Female', 8, 'Maya', 'Short Hair Tabby', 'Large', 'Gray, Orange',
 			'Maya is the ultimate cuddle buddy. This sweet furball is always ready to curl up on your bed and purr her way into your heart. If you try to brush her off, be prepared for some heavy back talk. Maya is not just a loving companion; she’s also the best listener, always there to hear you out and snuggle up for those late-night chats. When it comes to sleepovers, Maya is your perfect partner!',
-			'https://res.cloudinary.com/ddqchrxtm/image/upload/v1722966931/Cat_fj7yle.jpg', false);
+			'https://res.cloudinary.com/dtennawyr/image/upload/v1723052942/Maya_Cat_feetwu.jpg', false);
 
 INSERT INTO pets(
 	species, gender, age, name, breed, pet_size, color, description, profile_pic, is_adopted)
 	VALUES ('Cat', 'Male', 8, 'Tiger', 'Short Hair Tabby', 'Medium', 'Gray',
 			'Tiger might be the quiet type, but he’s got a heart full of charm! He’s a master at staking out his favorite spot and sticking to it like a true king. Leave a door open, and he’ll pounce through with the grace of a feline ninja, his curiosity always leading the way. While he might get a bit jumpy at surprises, Tiger’s dedication to guarding his territory—and you—is unwavering. He’s your loyal little protector, making sure that no one, or anything, disturbs his cozy domain!',
-			'https://res.cloudinary.com/ddqchrxtm/image/upload/v1722966936/Cat_yp5wmx.jpg', false);
+			'https://res.cloudinary.com/dtennawyr/image/upload/v1723052942/Tiger_Cat_lkweue.jpg', false);
 
 INSERT INTO pets(
 	species, gender, age, name, breed, pet_size, color, description, profile_pic, is_adopted)
@@ -79,7 +79,7 @@ INSERT INTO pets(
 	species, gender, age, name, breed, pet_size, color, description, profile_pic, is_adopted)
 	VALUES ('Cat', 'Male', 12, 'Spencer', 'American Ringtail', 'Medium', 'Grey Tabby',
 			'Meet Spencer, the lovable grumpy old man with a heart of gold. He’s all about kicking back and soaking up the relaxation, preferring a cozy spot to unwind over any frenzied playtime. Spencer treasures quiet, one-on-one moments with his humans and thrives in a peaceful, single-pet home. If you’re looking for a chill companion who appreciates the finer things in life—like a good nap and gentle affection—Spencer is your perfect match.',
-			'https://res.cloudinary.com/ddqchrxtm/image/upload/v1722966936/Cat_p83swh.jpg', false);
+			'https://res.cloudinary.com/dtennawyr/image/upload/v1723052942/Spencer_Cat_raqoth.jpg', false);
 
 INSERT INTO pets(
 	species, gender, age, name, breed, pet_size, color, description, profile_pic, is_adopted)
@@ -91,7 +91,7 @@ INSERT INTO pets(
 	species, gender, age, name, breed, pet_size, color, description, profile_pic, is_adopted)
 	VALUES ('Cat', 'Female', 8, 'Juniper', 'Unknown', 'Medium', 'Grey',
 			'Meet Juniper, your chatty, sweet little companion with a big personality! This vocal furball loves to engage in lively conversations with her humans, always ready to share her thoughts. She’s a true foodie, delighting in every treat and meal, and she’s also a playful enthusiast when it comes to toys. Juniper’s charming mix of chatter, playfulness, and affection will keep you entertained and delighted every day!',
-			'https://res.cloudinary.com/ddqchrxtm/image/upload/v1722966930/Cat_fywz7h.jpg', false);
+			'https://res.cloudinary.com/dtennawyr/image/upload/v1723052942/Juniper_Cat_ez6iyp.jpg', false);
 
 COMMIT TRANSACTION;
 
