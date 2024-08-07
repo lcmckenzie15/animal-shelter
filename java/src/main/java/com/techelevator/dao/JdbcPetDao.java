@@ -2,6 +2,7 @@ package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Pet;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -51,6 +52,25 @@ public class JdbcPetDao implements PetDao {
             throw new DaoException("Unable to connect to server or database", e);
         }
         return pet;
+    }
+
+    @Override
+    public Pet updatePetStatus(Pet pet) {
+        Pet updatedPet = null;
+        final String sql = "UPDATE pets SET is_adopted = ? WHERE pet_id = ?";
+        try {
+            int numberOfRowsAffected = jdbcTemplate.update(sql, pet.isAdopted(), pet.getId());
+            if (numberOfRowsAffected == 0) {
+                throw new DaoException("Zero pets affected!!");
+            } else {
+                updatedPet = getPetById(pet.getId());
+            }
+        }catch(CannotGetJdbcConnectionException e){
+            throw new DaoException("can't connect to server!!", e);
+        }catch(DataIntegrityViolationException e){
+            throw new DaoException("data integrity violation", e);
+        }
+        return updatedPet;
     }
 
     private Pet mapRowToPet(SqlRowSet rs) {

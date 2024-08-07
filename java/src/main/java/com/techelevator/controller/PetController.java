@@ -1,11 +1,14 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.PetDao;
+import com.techelevator.exception.DaoException;
 import com.techelevator.model.Pet;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -31,5 +34,13 @@ public class PetController {
         }
         return pet;
     }
-
+    @RequestMapping(path = "/pets/{id}", method = RequestMethod.PUT)
+    public Pet updatePetStatus (@PathVariable int id, @Valid @RequestBody Pet pet){
+        try {
+            pet.setId(id);
+            return petDao.updatePetStatus(pet);
+        }catch(DaoException e){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "pet not found!!");
+        }
+    }
 }

@@ -9,4 +9,6 @@ public interface PetDao {
     List<Pet> getPets();
 
     Pet getPetById(int petId);
+
+    Pet updatePetStatus(Pet pet);
 }
