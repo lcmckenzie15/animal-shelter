@@ -5,7 +5,7 @@
   <div id="login">
     <form v-on:submit.prevent="login">
       <h1 >Please Sign In</h1>
-      <div role="alert" v-if="invalidCredentials">
+      <div class="invalid" role="alert" v-if="invalidCredentials">
         Invalid username and password!
       </div>
       <div role="alert" v-if="this.$route.query.registration">
@@ -68,20 +68,25 @@ export default {
 <style scoped>
 :root {
   --primary-color: #607D8B;
+
   --secondary-color: #CFD8DC;
+
   --accent-color: #FF5722;
+
   --background-color: #ECEFF1;
+
   --text-color: #263238;
+
 }
 
 #volunteer-btn #register{
-color: var(--accent-color);
-margin-left: 10px;
+  color: #263238;
+  margin-left: 10px;
 }
 
 #volunteer-btn #register:hover{
   text-decoration: underline;
-
+  color: #FF5722;
 }
 
 #logo {
@@ -108,7 +113,7 @@ h1 {
 }
 
 button:hover {
-  color: var(--accent-color);
+  color: #FF5722;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
   transform: translateY(-5px);
 }
@@ -135,5 +140,10 @@ label {
 
 #register {
   color: var(--text-color);
+}
+
+.invalid {
+  color: red;
+  width: 400px;
 }
 </style>
