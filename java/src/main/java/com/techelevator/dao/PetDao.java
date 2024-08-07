@@ -7,4 +7,6 @@ import java.util.List;
 public interface PetDao {
 
     List<Pet> getPets();
+
+    Pet getPetById(int petId);
 }
