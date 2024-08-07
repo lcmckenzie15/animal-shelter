@@ -18,17 +18,17 @@ CREATE TABLE users (
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
 
---CREATE TABLE registration (
---    registration_id SERIAL,
---    email varchar(50) NOT NULL UNIQUE,
---    phone_number varchar(12) NOT NULL,
---    date_of_birth DATE NOT NULL,
---    first_name varchar(25) NOT NULL,
---    last_name varchar(25) NOT NULL,
---    status varchar(10) DEFAULT 'pending',
---    CONSTRAINT PK_registration PRIMARY KEY (registration_id)
---);
---
+CREATE TABLE registration (
+    registration_id SERIAL,
+    email varchar(50) NOT NULL UNIQUE,
+    phone_number varchar(12) NOT NULL,
+    date_of_birth DATE NOT NULL,
+    first_name varchar(25) NOT NULL,
+    last_name varchar(25) NOT NULL,
+    status varchar(10) DEFAULT 'pending',
+    CONSTRAINT PK_registration PRIMARY KEY (registration_id)
+);
+
 CREATE TABLE pets (
     pet_id SERIAL,
     species varchar(3) NOT NULL,
