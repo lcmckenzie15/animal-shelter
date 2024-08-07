@@ -6,7 +6,7 @@ INSERT INTO users (username,password_hash,role) VALUES ('admin@te.net','$2a$08$U
 INSERT INTO pets(
 	species, gender, age, name, breed, pet_size, color, description, profile_pic, is_adopted)
 	VALUES ('Dog', 'Female', 2, 'Scarlet', 'Aussiedoodle Mini', 'Small', 'Gray, Tan, Black',
-	'Always full of energy and ready to take on any play time you have for her. She is very lovely and is always waiting to see her favorite people and wanting attention from them.She can be a little on the noisy side when it comes to barking.',
+	'Always full of energy and ready to take on any play time you have for her. She is very lovely and is always waiting to see her favorite people and wanting attention from them. She can be a little on the noisy side when it comes to barking.',
 			'https://res.cloudinary.com/ddqchrxtm/image/upload/v1722969083/Scarlet-Dog_zganlm.jpg', false);
 
 INSERT INTO pets(

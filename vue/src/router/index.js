@@ -8,6 +8,7 @@ import LogoutView from '../views/LogoutView.vue';
 import RegisterView from '../views/RegisterView.vue';
 import VolunteerView from '../views/VolunteerView.vue';
 import BrowsePetsView from '../views/BrowsePetsView.vue';
+import PetDetailsView from '../views/PetDetailsView.vue';
 import VolunteerAppView from '../views/VolunteerAppView.vue';
 
 /**
@@ -23,6 +24,14 @@ const routes = [
     path: '/',
     name: 'home',
     component: HomeView,
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
+    path: '/pets/:id',
+    name: 'pet-details',
+    component: PetDetailsView,
     meta: {
       requiresAuth: false
     }
