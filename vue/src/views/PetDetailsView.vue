@@ -9,13 +9,13 @@
 </div>
        
         <div class="col ">
-  <h1 class="pet-name ">{{ pet?.name }}</h1>
+  <h1 class="name of pet">{{ pet?.name }}</h1>
 </div>
 
 
 
 <div class="col">
-<table class="pet-details">
+<table class="pet-stuff">
     <thead>
         <tr>
             <th>Details</th>
@@ -76,7 +76,7 @@ border-radius: 25px;
   transition: all 0.3s ease; 
 }
 
-.pet-name {
+.name-of-pet {
     padding-top: 20px;
 }
 
@@ -87,7 +87,7 @@ border-radius: 25px;
 
 }
 
-.pet-details {
+.pet-stuff {
     border: 3px solid black;
     border-radius: 8px;
     width: 500px;
