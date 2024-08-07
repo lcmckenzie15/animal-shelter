@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
+import com.techelevator.exception.DuplicateEmailException;
 import com.techelevator.model.Registration;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
@@ -54,7 +55,7 @@ public class JdbcRegistrationDao implements RegistrationDao {
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
         } catch (DataIntegrityViolationException e) {
-            throw new DaoException("Data integrity violation", e);
+            throw new DuplicateEmailException("This email is already in use. Please try a different email.", e);
         }
         return createdRegistration;
     }
