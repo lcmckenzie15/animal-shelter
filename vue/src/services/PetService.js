@@ -6,5 +6,9 @@ export default {
 
     getPet(id) {
         return axios.get(`/pets/${id}`);
+    },
+
+    adoptPet(id, pet) {
+        return axios.put(`/pets/${id}`, pet);
     }
 }

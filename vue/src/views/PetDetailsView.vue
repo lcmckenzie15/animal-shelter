@@ -38,7 +38,7 @@
 </tbody>
 </table>
 <div>
-    <button class="pet-adopt-button">Adopt</button>
+    <button class="pet-adopt-button" v-on:click="adoptPet">Adopt</button>
 </div>
 </div>
 </div>
@@ -64,6 +64,11 @@ export default  {
         .then(response => {
             this.pet = response.data;
         })
+    },
+    methods: {
+        adoptPet() {
+            petService.adoptPet(this.pet.id, this.pet);
+        }
     }
 }
 

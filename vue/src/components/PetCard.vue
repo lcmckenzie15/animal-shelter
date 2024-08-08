@@ -1,11 +1,11 @@
 <template>
-  <!-- <div class="pet-card" v-if = "isAdopted">
+  <div class="pet-card" v-if = "pet.adopted">
     <img :src="pet.profilePic" :alt="`${pet.name}'s profile picture`" class="pet-image"/>
     <div class="pet-details">
       <h2 class="pet-name">Adopted</h2>
-    </div> -->
-  <!-- </div> -->
-  <div class="pet-card">
+    </div>
+  </div>
+  <div class="pet-card" v-else>
     <img :src="pet.profilePic" :alt="`${pet.name}'s profile picture`" class="pet-image"/>
     <div class="pet-details">
       <h2 class="pet-name">{{ pet.name }}</h2>

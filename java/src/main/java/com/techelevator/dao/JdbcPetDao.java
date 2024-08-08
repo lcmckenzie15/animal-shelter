@@ -24,7 +24,8 @@ public class JdbcPetDao implements PetDao {
     public List<Pet> getPets() {
         List<Pet> pets = new ArrayList<>();
         String sql = "SELECT pet_id, species, gender, age, name, breed, pet_size, color, description, profile_pic, is_adopted\n" +
-                "\tFROM pets;";
+                "\tFROM pets " +
+                "ORDER BY name;";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
             while (results.next()) {
@@ -61,14 +62,14 @@ public class JdbcPetDao implements PetDao {
         try {
             int numberOfRowsAffected = jdbcTemplate.update(sql, pet.getId());
             if (numberOfRowsAffected == 0) {
-                throw new DaoException("Zero pets affected!!");
+                throw new DaoException("Zero pets affected.");
             } else {
                 updatedPet = getPetById(pet.getId());
             }
-        }catch(CannotGetJdbcConnectionException e){
-            throw new DaoException("can't connect to server!!", e);
-        }catch(DataIntegrityViolationException e){
-            throw new DaoException("data integrity violation", e);
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
         }
         return updatedPet;
     }
