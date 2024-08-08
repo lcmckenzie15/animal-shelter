@@ -11,7 +11,7 @@
 <section v-else>
     <div class="alert alert-danger alert-dismissible" v-if="showError">
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        <strong>Error!</strong> There was an error submitting your application. Please try again.
+        <strong>Error!</strong> This email is already registered.
     </div>   
     <form class="container pt-4" v-on:submit.prevent="submitForm">
         <div class="row p-3">
