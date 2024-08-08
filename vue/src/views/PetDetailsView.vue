@@ -3,14 +3,14 @@
       <div class="row">
         <div class="col">
           <button class="go-back-button" @click="$router.push(`/pets`)">Back</button>
-          <div class="image-container">
+          <!-- <div class="image-container">
             <div class="ribbon-wrapper">
               <div class="ribbon-green">
                 <span>Adopted</span>
-              </div>
+              </div> -->
               <img :src="pet.profilePic" alt="Profile Picture" class="dog-pic" />
-            </div>
-          </div>
+            <!-- </div> -->
+          <!-- </div> -->
         </div>
         <div class="col">
           <h1 class="name-of-pet">{{ pet?.name }}</h1>
