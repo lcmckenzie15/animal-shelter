@@ -79,7 +79,7 @@
             </tbody>
           </table>
           <div>
-            <button class="pet-adopt-button" v-on:click="adoptPet">Adopt</button>
+            <button class="pet-adopt-button" v-on:click="handleAdoptClick" >Adopt</button>
           </div>
         </div>
       </div>
@@ -109,7 +109,15 @@ export default  {
     methods: {
         adoptPet() {
             petService.adoptPet(this.pet.id, this.pet);
+        },
+        navigateToPets() {
+          window.location.reload();
+        },
+        handleAdoptClick() {
+            this.adoptPet();
+            this.navigateToPets();
         }
+
     }
 }
 
