@@ -2,12 +2,15 @@
   <div>
     <h1>Available Pets</h1>
     <div class="pet-info container">
+      
+      
+     
       <PetCard 
         class="pet-card bg-image" 
-        style="background: hsla(14, 100%, 57%, 0.7)"
         v-for="pet in pets" :key="pet.id" :pet="pet"
         @click="$router.push(`/pets/${pet.id}`)">
         <img :src="pet.profilePic" alt="Profile Picture" class="w-100">
+     
       </PetCard>
     </div>
   </div>
@@ -40,6 +43,9 @@ export default {
 </script>
 
 <style scoped>
+
+
+
 .pet-info {
   display: flex;
   flex-wrap: wrap;

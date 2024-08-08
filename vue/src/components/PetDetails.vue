@@ -1,5 +1,7 @@
 <template>
     <div class="pet-details">
+      
+        </div>
         <img :src="pet?.profilePic" :alt="`${pet?.name}'s profile picture`" class="pet-image"/>
 <div>
   <h2 class="pet-name">{{ pet?.name }}</h2>
@@ -11,7 +13,8 @@
   <p class="pet-gender">{{ pet?.gender }}</p>
   <button class="pet-adopt-button">Adopt</button>
 </div>
-    </div>
+        
+     
   </template>
 
   <script>
@@ -25,6 +28,9 @@
   };
   </script>
   <style scoped>
+
+
+
   .pet-card {
     border: 1px solid #ddd;
     border-radius: 8px;
