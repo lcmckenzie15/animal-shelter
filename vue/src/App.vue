@@ -1,20 +1,22 @@
 <template>
   <div id="capstone-app">
-    <nav id="nav" class="navbar navbar-expand-sm" style="background-color: #ECEFF1;">
+    <nav id="nav" class="navbar navbar-expand-sm" style="background-color: #607D8B;">
     <a href="/" id="home-page">
-      <img id="home-image" src="@/Pictures/logo1.png" alt="Home" style="width:200px; background-color: #ECEFF1;" class="p-0">
+      <img id="home-image" src="@/Pictures/logo1.png" alt="Home" style="width:200px; background-color: #CFD8DC;" class="rounded-circle">
     </a>
       <div class="d-flex justify-content-center">
-        <router-link class="nav-item" v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
-        <router-link class="nav-item" v-bind:to="{ name: 'pets' }">Adopt</router-link>&nbsp;|&nbsp;
-        <router-link class="nav-item" v-bind:to="{ name: 'volunteer' }">Volunteer</router-link>&nbsp;|&nbsp;
+        <router-link class="nav-item text-decoration-none text-light px-5" v-bind:to="{ name: 'home' }">Home</router-link>
+        <router-link class="nav-item text-decoration-none text-light px-5" v-bind:to="{ name: 'pets' }">Adopt</router-link>
+        <router-link class="nav-item text-decoration-none text-light px-5" v-bind:to="{ name: 'volunteer' }">Volunteer</router-link>
       </div>
-      <router-link class="nav-item" v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''">Login</router-link>
-      <router-link class="nav-item" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+      <div>
+        <router-link class="nav-item text-decoration-none text-light px-5" v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''">Login</router-link>
+        <router-link class="nav-item text-decoration-none text-light px-5" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+      </div>
     </nav>
     <router-view />
     <div class="container-fluid my-5 p-0">
-      <footer class="text-center text-white mt-auto" style="background-color: #ECEFF1;">
+      <footer class="text-center text-white mt-auto" style="background-color: #CFD8DC;">
         <!-- Grid container -->
         <div class="container pt-4">
           <section class="mb-4">
