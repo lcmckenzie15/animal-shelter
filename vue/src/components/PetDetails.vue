@@ -1,5 +1,9 @@
 <template>
     <div class="pet-details">
+      <div class="ribbon-wrapper">
+        <div class="ribbon-green">
+          <span>Adopted</span>
+        </div>
         <img :src="pet?.profilePic" :alt="`${pet?.name}'s profile picture`" class="pet-image"/>
 <div>
   <h2 class="pet-name">{{ pet?.name }}</h2>
@@ -11,6 +15,8 @@
   <p class="pet-gender">{{ pet?.gender }}</p>
   <button class="pet-adopt-button">Adopt</button>
 </div>
+        
+      </div>
     </div>
   </template>
 
@@ -25,6 +31,40 @@
   };
   </script>
   <style scoped>
+
+.main {
+  display: block;
+  width: 100%;
+  height: 200px;
+  background-color: #ff5722;
+  margin: 0;
+  border-radius: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.ribbon-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.ribbon-green {
+  color: #fff;
+  text-align: center;
+  transform: rotate(25deg);
+  position: absolute;
+  top: 10px;
+  right: 1px; 
+  background-color: #33b819;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
   .pet-card {
     border: 1px solid #ddd;
     border-radius: 8px;
