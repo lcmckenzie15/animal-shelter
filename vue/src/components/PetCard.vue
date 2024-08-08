@@ -1,14 +1,13 @@
 <template>
-  <div class="pet-card" v-if = "pet.adopted">
-    <img :src="pet.profilePic" :alt="`${pet.name}'s profile picture`" class="pet-image"/>
-    <div class="pet-details">
-      <h2 class="pet-name">Adopted</h2>
-    </div>
-  </div>
-  <div class="pet-card" v-else>
-    <img :src="pet.profilePic" :alt="`${pet.name}'s profile picture`" class="pet-image"/>
+  <div class="pet-card">
+    <img :src="pet.profilePic" :alt="`${pet.name}'s profile picture`" class="pet-image" />
     <div class="pet-details">
       <h2 class="pet-name">{{ pet.name }}</h2>
+    </div>
+    <div class="ribbon-wrapper" v-if="pet.adopted">
+      <div class="ribbon-green">
+        <span>Adopted</span>
+      </div>
     </div>
   </div>
 </template>
@@ -43,7 +42,7 @@ export default {
   text-align: center;
   background-color: #fff;
   position: relative;
-  overflow: hidden; /* Ensure no overflow from child elements */
+  overflow: hidden; 
 }
 
 .main {
@@ -53,7 +52,7 @@ export default {
   margin: 0;
   border-radius: 30px;
   position: relative;
-  overflow: hidden; /* Ensure image does not overflow */
+  overflow: hidden; 
 }
 
 .ribbon-wrapper {
@@ -69,10 +68,10 @@ export default {
   text-align: center;
   transform: rotate(25deg);
   position: absolute;
-  top: 10px; /* Adjust as needed */
-  right: 10px; /* Adjust as needed */
+  top: 10px;
+  right: 10px; 
   background-color: #33b819;
-  padding: 7px; /* Ensure padding is set properly */
+  padding: 7px; 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -81,8 +80,8 @@ export default {
 .pet-image {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensures the image covers the container */
-  display: block; /* Remove any potential inline display issues */
+  object-fit: cover; 
+  display: block; 
 }
 
 .pet-details {

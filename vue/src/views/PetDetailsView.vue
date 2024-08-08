@@ -1,16 +1,57 @@
 <template>
-    <div class="container">
+    <div class="container" v-if="pet.adopted">
       <div class="row">
         <div class="col">
           <button class="go-back-button" @click="$router.push(`/pets`)">Back</button>
-          <!-- <div class="image-container">
-            <div class="ribbon-wrapper">
+          <div class="image-container">
+            <div class="ribbon-wrapper" >
               <div class="ribbon-green">
                 <span>Adopted</span>
-              </div> -->
+              </div>
               <img :src="pet.profilePic" alt="Profile Picture" class="dog-pic" />
-            <!-- </div> -->
-          <!-- </div> -->
+             </div> 
+          </div> 
+        </div>
+        <div class="col">
+          <h1 class="name-of-pet">{{ pet?.name }}</h1>
+        </div>
+        <div class="col">
+          <table class="pet-stuff">
+            <thead>
+              <tr>
+                <th>Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="spacer"><td></td></tr>
+              <tr><td><strong>Age:</strong> {{ pet?.age }} years old</td></tr>
+              <tr class="spacer"><td></td></tr>
+              <tr><td><strong>Breed:</strong> {{ pet?.breed }}</td></tr>
+              <tr class="spacer"><td></td></tr>
+              <tr><td><strong>Size:</strong> {{ pet?.petSize }}</td></tr>
+              <tr class="spacer"><td></td></tr>
+              <tr><td><strong>Gender:</strong> {{ pet?.gender }}</td></tr>
+              <tr class="spacer"><td></td></tr>
+              <tr><td><strong>Color:</strong> {{ pet?.color }}</td></tr>
+              <tr class="spacer"><td></td></tr>
+              <tr><td><strong>Description:</strong> {{ pet?.description }}</td></tr>
+              <tr class="spacer"><td></td></tr>
+            </tbody>
+          </table>
+          <div>
+            <button class="pet-adopt-button" v-on:click="adoptPet">Adopt</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" v-else>
+      <div class="row">
+        <div class="col">
+          <button class="go-back-button" @click="$router.push(`/pets`)">Back</button>
+          <div class="image-container">
+              <img :src="pet.profilePic" alt="Profile Picture" class="dog-pic-no-adopt" />
+          
+          </div> 
         </div>
         <div class="col">
           <h1 class="name-of-pet">{{ pet?.name }}</h1>
@@ -128,6 +169,15 @@ export default  {
   border: solid #FF5722 5px;
   border-radius: 25px;
   object-fit: cover;
+}
+
+.dog-pic-no-adopt {
+  width: 100%; 
+  height: auto; 
+  border: solid #FF5722 5px;
+  border-radius: 25px;
+  object-fit: cover;
+  margin-top: 40px;
 }
 
 .go-back-button {
