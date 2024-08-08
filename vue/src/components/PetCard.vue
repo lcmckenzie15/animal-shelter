@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
   <div class="pet-card" v-if = "pet.adopted">
     <img :src="pet.profilePic" :alt="`${pet.name}'s profile picture`" class="pet-image"/>
     <div class="pet-details">
@@ -10,20 +9,6 @@
     <img :src="pet.profilePic" :alt="`${pet.name}'s profile picture`" class="pet-image"/>
     <div class="pet-details">
       <h2 class="pet-name">{{ pet.name }}</h2>
-=======
-  <div class="pet-card">
-    <div class="main">
-      <div class="ribbon-wrapper">
-        <div class="ribbon-green">
-          <span>Adopted</span>
-
-        </div>
-        <img :src="pet.profilePic" :alt="`${pet.name}'s profile picture`" class="pet-image"/>
-      </div>
-      <div class="pet-details">
-        <h2 class="pet-name">{{ pet.name }}</h2>
-      </div>
->>>>>>> banner-test
     </div>
   </div>
 </template>
