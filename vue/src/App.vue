@@ -53,6 +53,7 @@
   </div>
 </template>
 <style scoped>
+
 /* :root {
   --primary-color: #607D8B;
   --secondary-color: #CFD8DC;

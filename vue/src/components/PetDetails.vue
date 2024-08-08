@@ -1,9 +1,8 @@
 <template>
   <div class="pet-card">
-    <div class="ribbon-wrapper" v-if="pet.adopted">
-      <div class="ribbon-green" v-if="pet.adopted">
-        <span>Adopted</span>
-      </div>
+    <div class="adopted-overlay" v-if="pet.adopted">
+        <i class="fa-solid fa-heart"></i>
+        <span class="adopted-text">ADOPTED</span>
     </div>
     <img :src="pet.profilePic" :alt="`${pet.name}'s profile picture`" class="pet-image" />
     <div class="pet-details">
@@ -34,6 +33,27 @@ export default {
 </script>
 
 <style scoped>
+
+.adopted-text {
+  color: white;
+  font-size: 11px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  top: 28px;
+  right: 12px;
+transform: rotate(25deg);
+}
+
+.fa-heart {
+  color: rgb(252, 100, 100); 
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 60px;
+  transform: rotate(25deg);
+}
+
 .pet-card {
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -89,25 +109,5 @@ export default {
   disabled: true;
 }
 
-.ribbon-wrapper {
-  position: absolute;
-  top: 10px;
-  right: -10px;
-  width: 75px;
-  height: 75px;
-  overflow: hidden;
-}
 
-.ribbon-green {
-  position: absolute;
-  top: 19px;
-  right: -21px;
-  transform: rotate(45deg);
-  background-color: #33B819;
-  color: white;
-  padding: 5px 0;
-  width: 100px;
-  text-align: center;
-  box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
-}
 </style>

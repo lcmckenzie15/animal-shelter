@@ -4,10 +4,9 @@
         <div class="col">
           <button class="go-back-button" @click="$router.push(`/pets`)">Back</button>
           <div class="image-container">
-            <div class="ribbon-wrapper" >
-              <div class="ribbon-green">
-                <span>Adopted</span>
-              </div>
+            <div class="adopted-overlay" v-if="pet.adopted">
+        <i class="fa-solid fa-heart"></i>
+        <span class="adopted-text">ADOPTED</span>
               <img :src="pet.profilePic" alt="Profile Picture" class="dog-pic" />
              </div> 
           </div> 
@@ -117,6 +116,27 @@ export default  {
 </script>
 
 <style scoped>
+
+.fa-heart {
+  color: rgb(252, 100, 100); 
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  font-size: 100px;
+  transform: rotate(25deg);
+}
+
+.adopted-text {
+  color: white;
+  font-size: 18px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  top: 87px;
+  right: 22px;
+transform: rotate(25deg);
+}
+
 .container {
   padding: 20px;
 }
@@ -144,24 +164,6 @@ export default  {
   width: 500px;
 }
 
-.ribbon-wrapper {
-  position: absolute;
-  top: 1px;
-  right: 1px; 
-  z-index: 1; 
-}
-
-.ribbon-green {
-  color: #fff;
-  text-align: center;
-  transform: rotate(25deg); 
-  background-color: #0fce19;
-  padding: 7px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 12px; 
-}
 
 .dog-pic {
   width: 100%; 
@@ -169,6 +171,7 @@ export default  {
   border: solid #FF5722 5px;
   border-radius: 25px;
   object-fit: cover;
+  margin-top: 40px;
 }
 
 .dog-pic-no-adopt {
