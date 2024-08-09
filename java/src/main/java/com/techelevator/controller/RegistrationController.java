@@ -5,6 +5,7 @@ import com.techelevator.exception.DaoException;
 import com.techelevator.exception.DuplicateEmailException;
 import com.techelevator.model.Registration;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -49,6 +50,7 @@ public class RegistrationController {
     }
 
     @RequestMapping(path = "/registration/forms/{id}", method = RequestMethod.PUT)
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Registration updateRegistrationStatus(@PathVariable int id, @Valid @RequestBody Registration registration) {
         try {
             registration.setRegistrationId(id);
@@ -57,4 +59,12 @@ public class RegistrationController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Registration form not found.");
         }
     }
+
+
+
+
+
+
+
+
 }

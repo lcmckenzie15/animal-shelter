@@ -9,6 +9,10 @@ export default {
 
   register(user) {
     return axios.post('/register', user)
+  },
+
+  loginAdmin(admin) {
+    return axios.post('/login', admin)
   }
 
 }

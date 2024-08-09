@@ -1,17 +1,27 @@
 <template>
   <div id="capstone-app">
     <nav id="nav" class="navbar navbar-expand-sm" style="background-color: #607D8B;">
-    <a href="/" id="home-page">
-      <img id="home-image" src="@/Pictures/logo1.png" alt="Home" style="width:200px; background-color: #CFD8DC;" class="rounded-circle">
-    </a>
+      <a href="/" id="home-page">
+        <img id="home-image" src="@/Pictures/logo1.png" alt="Home" style="width:200px; background-color: #CFD8DC;"
+          class="rounded-circle">
+      </a>
       <div class="d-flex justify-content-center">
-        <router-link class="nav-item text-decoration-none text-light px-5 fs-1" v-bind:to="{ name: 'home' }">Home</router-link>
-        <router-link class="nav-item text-decoration-none text-light px-5 fs-1" v-bind:to="{ name: 'pets' }">Adopt</router-link>
-        <router-link class="nav-item text-decoration-none text-light px-5 fs-1" v-bind:to="{ name: 'volunteer' }">Volunteer</router-link>
+        <router-link class="nav-item text-decoration-none text-light px-5 fs-1"
+          v-bind:to="{ name: 'home' }">Home</router-link>
+        <router-link class="nav-item text-decoration-none text-light px-5 fs-1"
+          v-bind:to="{ name: 'pets' }">Adopt</router-link>
+        <router-link class="nav-item text-decoration-none text-light px-5 fs-1"
+          v-bind:to="{ name: 'volunteer' }">Volunteer</router-link>
       </div>
       <div>
-        <router-link id="login" class="nav-item text-decoration-none text-light px-5 fs-1" v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''">Login</router-link>
-        <router-link id="login" class="nav-item text-decoration-none text-light px-5 fs-1" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+        <router-link id="approve" class="nav-item text-decoration-none text-light px-5 fs-1"
+          v-bind:to="{ name: 'applications' }" v-if="isAdmin()">Applications</router-link>
+      </div>
+      <div>
+        <router-link id="login" class="nav-item text-decoration-none text-light px-5 fs-1" v-bind:to="{ name: 'login' }"
+          v-if="$store.state.token == ''">Login</router-link>
+        <router-link id="login" class="nav-item text-decoration-none text-light px-5 fs-1"
+          v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
       </div>
     </nav>
     <router-view />
@@ -56,6 +66,20 @@
 </template>
 
 <script>
+export default {
+  methods: {
+    isAdmin() {
+      if (!this.$store.state.user.authorities) {
+        return false;
+      }
+      if (this.$store.state.user.authorities.length == 0) {
+        return false;
+      }
+      return this.$store.state.user.authorities[0].name == 'ROLE_ADMIN';
+    },
+  }
+};
+
 </script>
 
 <style>
