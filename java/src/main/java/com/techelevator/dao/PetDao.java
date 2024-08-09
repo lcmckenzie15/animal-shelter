@@ -11,4 +11,6 @@ public interface PetDao {
     Pet getPetById(int petId);
 
     Pet updatePetStatus(Pet pet);
+
+    Pet createPet(Pet pet);
 }

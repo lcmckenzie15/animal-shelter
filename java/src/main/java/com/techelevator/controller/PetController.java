@@ -43,4 +43,16 @@ public class PetController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "pet not found!!");
         }
     }
+
+    @RequestMapping(path = "/pets", method = RequestMethod.POST)
+    public Pet createPet (@RequestBody @Valid Pet pet) {
+        try {
+            if (pet == null) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            }
+            return petDao.createPet(pet);
+        } catch (DaoException e){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Please verify your pet info is valid.");
+        }
+    }
 }
