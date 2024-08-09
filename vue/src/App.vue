@@ -5,13 +5,13 @@
       <img id="home-image" src="@/Pictures/logo1.png" alt="Home" style="width:200px; background-color: #CFD8DC;" class="rounded-circle">
     </a>
       <div class="d-flex justify-content-center">
-        <router-link class="nav-item text-decoration-none text-light px-5" v-bind:to="{ name: 'home' }">Home</router-link>
-        <router-link class="nav-item text-decoration-none text-light px-5" v-bind:to="{ name: 'pets' }">Adopt</router-link>
-        <router-link class="nav-item text-decoration-none text-light px-5" v-bind:to="{ name: 'volunteer' }">Volunteer</router-link>
+        <router-link class="nav-item text-decoration-none text-light px-5 fs-1" v-bind:to="{ name: 'home' }">Home</router-link>
+        <router-link class="nav-item text-decoration-none text-light px-5 fs-1" v-bind:to="{ name: 'pets' }">Adopt</router-link>
+        <router-link class="nav-item text-decoration-none text-light px-5 fs-1" v-bind:to="{ name: 'volunteer' }">Volunteer</router-link>
       </div>
       <div>
-        <router-link class="nav-item text-decoration-none text-light px-5" v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''">Login</router-link>
-        <router-link class="nav-item text-decoration-none text-light px-5" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+        <router-link id="login" class="nav-item text-decoration-none text-light px-5 fs-1" v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''">Login</router-link>
+        <router-link id="login" class="nav-item text-decoration-none text-light px-5 fs-1" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
       </div>
     </nav>
     <router-view />
@@ -54,63 +54,16 @@
     </div>
   </div>
 </template>
-<style scoped>
-/* :root {
-  --primary-color: #607D8B;
-  --secondary-color: #CFD8DC;
-  --accent-color: #FF5722;
-  --background-color: #ECEFF1;
-  --text-color: #263238;
+
+<script>
+</script>
+
+<style>
+.nav-item:hover {
+  color: #FF5722 !important;
 }
 
-#nav {
-  background-color: var(--background-color);
-  color: var(--text-color);
-  font-size: 25px;
-  padding: 5px;
-  display: flex;
-  align-items: center;
-}
-
-
-.logo {
-  width: 300px;
-  height: auto;
-  cursor: pointer;
-  margin-right: auto;
-}
-
-
-.nav-links {
-  display: flex;
-  gap: 20px;
-  flex-grow: 1;
-}
-
-
-a {
-  color: var(--text-color);
-  text-decoration: none;
-}
-
-
-a:visited {
-  color: var(--text-color);
-  text-decoration: none;
-}
-
-
-a:hover {
-  color: var(--accent-color);
-}
-
-
-.login-link {
-  color: var(--text-color);
-  margin-left: auto;
-}
-
-.login-link:visited {
-  color: var(--text-color);
+/* #login {
+  padding-left: 500px !important;
 } */
 </style>
