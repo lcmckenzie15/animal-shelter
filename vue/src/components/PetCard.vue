@@ -4,12 +4,13 @@
     <div class="pet-details">
       <h2 class="pet-name">{{ pet.name }}</h2>
     </div>
-    <div class="ribbon-wrapper" v-if="pet.adopted">
-      <div class="ribbon-green">
-        <span>Adopted</span>
+    <div class="adopted-overlay" v-if="pet.adopted">
+        <i class="fa-solid fa-heart"></i>
+        <span class="adopted-text">ADOPTED</span>
       </div>
-    </div>
-  </div>
+      </div>
+  
+
 </template>
 
 <script>
@@ -33,10 +34,21 @@ export default {
 </script>
 
 <style scoped>
+
+.adopted-text {
+  color: white;
+  font-size: 11px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  top: 28px;
+  right: 12px;
+transform: rotate(25deg);
+}
+
 .pet-card {
   border: 1px solid #ddd;
   border-radius: 30px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   width: 200px;
   margin: 10px;
   text-align: center;
@@ -45,37 +57,15 @@ export default {
   overflow: hidden; 
 }
 
-.main {
-  display: block;
-  width: 100%;
-  height: 200px;
-  margin: 0;
-  border-radius: 30px;
-  position: relative;
-  overflow: hidden; 
-}
-
-.ribbon-wrapper {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.ribbon-green {
-  color: #fff;
-  text-align: center;
-  transform: rotate(25deg);
+.fa-heart {
+  color: rgb(252, 100, 100); 
   position: absolute;
   top: 10px;
-  right: 10px; 
-  background-color: #33b819;
-  padding: 7px; 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  right: 10px;
+  font-size: 60px;
+  transform: rotate(25deg);
 }
+
 
 .pet-image {
   width: 100%;
@@ -85,11 +75,11 @@ export default {
 }
 
 .pet-details {
-  padding: 10px;
   position: absolute;
   bottom: 0;
   width: 100%;
-  background: rgb(250, 139, 105);
+  background-color: #ff561e;
+  /* background: rgb(250, 139, 105); */
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
 }
@@ -97,6 +87,7 @@ export default {
 .pet-name {
   font-size: 1.2em;
   margin: 0;
+  color: white;
 }
 
 .pet-breed,

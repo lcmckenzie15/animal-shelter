@@ -1,10 +1,8 @@
 <template>
+  
   <div>
-    <h1>Available Pets</h1>
+    <h1 class="p-5 text-center">Available Pets</h1>
     <div class="pet-info container">
-      
-      
-     
       <PetCard 
         class="pet-card bg-image" 
         v-for="pet in pets" :key="pet.id" :pet="pet"
@@ -14,6 +12,7 @@
       </PetCard>
     </div>
   </div>
+  
 </template>
 
 <script>
@@ -43,9 +42,6 @@ export default {
 </script>
 
 <style scoped>
-
-
-
 .pet-info {
   display: flex;
   flex-wrap: wrap;
@@ -64,11 +60,6 @@ export default {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
   transition: transform 0.5s ease, box-shadow 0.3s ease; 
 }
-
-h1 {
-  color: #000000;
-  text-align: center;
-};
 
 
 </style>
