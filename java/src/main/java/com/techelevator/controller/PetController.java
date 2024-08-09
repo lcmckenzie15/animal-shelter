@@ -5,6 +5,7 @@ import com.techelevator.exception.DaoException;
 import com.techelevator.model.Pet;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -45,7 +46,9 @@ public class PetController {
     }
 
     @RequestMapping(path = "/pets", method = RequestMethod.POST)
+    @PreAuthorize("isAuthenticated()")
     public Pet createPet (@RequestBody @Valid Pet pet) {
+
         try {
             if (pet == null) {
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST);

@@ -1,6 +1,9 @@
 <template>
   
   <div>
+    
+    <button id="add-pet-button" type=button class="btn btn-lg position-absolute translate-middle start-50 mt-4" style="background-color: #FF5722;" @click="$router.push(`/add-new-pet`)" v-if="$store.state.token != ''">Add A Pet</button>
+      
     <h1 class="p-5 text-center">Available Pets</h1>
     <div class="pet-info container">
       <PetCard 
