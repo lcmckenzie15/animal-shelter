@@ -1,132 +1,183 @@
 <template>
-    <div class="container" v-if="pet.adopted">
-      <div class="row">
-        <div class="col">
-          <button class="go-back-button" @click="$router.push(`/pets`)">Back</button>
-          <div class="image-container">
-            <div class="adopted-overlay" v-if="pet.adopted">
-        <i class="fa-solid fa-heart"></i>
-        <span class="adopted-text">ADOPTED</span>
-              <img :src="pet.profilePic" alt="Profile Picture" class="dog-pic" />
-             </div> 
-          </div> 
-        </div>
-        <div class="col">
-          <h1 class="name-of-pet">{{ pet?.name }}</h1>
-        </div>
-        <div class="col">
-          <table class="pet-stuff">
-            <thead>
-              <tr>
-                <th>Details</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="spacer"><td></td></tr>
-              <tr><td><strong>Age:</strong> {{ pet?.age }} years old</td></tr>
-              <tr class="spacer"><td></td></tr>
-              <tr><td><strong>Breed:</strong> {{ pet?.breed }}</td></tr>
-              <tr class="spacer"><td></td></tr>
-              <tr><td><strong>Size:</strong> {{ pet?.petSize }}</td></tr>
-              <tr class="spacer"><td></td></tr>
-              <tr><td><strong>Gender:</strong> {{ pet?.gender }}</td></tr>
-              <tr class="spacer"><td></td></tr>
-              <tr><td><strong>Color:</strong> {{ pet?.color }}</td></tr>
-              <tr class="spacer"><td></td></tr>
-              <tr><td><strong>Description:</strong> {{ pet?.description }}</td></tr>
-              <tr class="spacer"><td></td></tr>
-            </tbody>
-          </table>
-          <div>
-            <button class="pet-adopt-button" v-on:click="adoptPet">Adopt</button>
+  <div class="container" v-if="pet.adopted">
+    <div class="row">
+      <div class="col">
+        <button class="go-back-button" @click="$router.push(`/pets`)">Back</button>
+        <div class="image-container">
+          <div class="adopted-overlay" v-if="pet.adopted">
+            <i class="fa-solid fa-heart"></i>
+            <span class="adopted-text">ADOPTED</span>
+            <img :src="pet.profilePic" alt="Profile Picture" class="dog-pic" />
           </div>
         </div>
       </div>
-    </div>
-    <div class="container" v-else>
-      <div class="row">
-        <div class="col">
-          <button class="go-back-button" @click="$router.push(`/pets`)">Back</button>
-          <div class="image-container">
-              <img :src="pet.profilePic" alt="Profile Picture" class="dog-pic-no-adopt" />
-          
-          </div> 
-        </div>
-        <div class="col">
-          <h1 class="name-of-pet">{{ pet?.name }}</h1>
-        </div>
-        <div class="col">
-          <table class="pet-stuff">
-            <thead>
-              <tr>
-                <th>Details</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="spacer"><td></td></tr>
-              <tr><td><strong>Age:</strong> {{ pet?.age }} years old</td></tr>
-              <tr class="spacer"><td></td></tr>
-              <tr><td><strong>Breed:</strong> {{ pet?.breed }}</td></tr>
-              <tr class="spacer"><td></td></tr>
-              <tr><td><strong>Size:</strong> {{ pet?.petSize }}</td></tr>
-              <tr class="spacer"><td></td></tr>
-              <tr><td><strong>Gender:</strong> {{ pet?.gender }}</td></tr>
-              <tr class="spacer"><td></td></tr>
-              <tr><td><strong>Color:</strong> {{ pet?.color }}</td></tr>
-              <tr class="spacer"><td></td></tr>
-              <tr><td><strong>Description:</strong> {{ pet?.description }}</td></tr>
-              <tr class="spacer"><td></td></tr>
-            </tbody>
-          </table>
-          <div>
-            <button class="pet-adopt-button" v-on:click="handleAdoptClick" >Adopt</button>
-          </div>
+      <div class="col">
+        <h1 class="name-of-pet">{{ pet?.name }}</h1>
+      </div>
+      <div class="col">
+        <table class="pet-stuff">
+          <thead>
+            <tr>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="spacer">
+              <td></td>
+            </tr>
+            <tr>
+              <td><strong>Age:</strong> {{ pet?.age }} years old</td>
+            </tr>
+            <tr class="spacer">
+              <td></td>
+            </tr>
+            <tr>
+              <td><strong>Breed:</strong> {{ pet?.breed }}</td>
+            </tr>
+            <tr class="spacer">
+              <td></td>
+            </tr>
+            <tr>
+              <td><strong>Size:</strong> {{ pet?.petSize }}</td>
+            </tr>
+            <tr class="spacer">
+              <td></td>
+            </tr>
+            <tr>
+              <td><strong>Gender:</strong> {{ pet?.gender }}</td>
+            </tr>
+            <tr class="spacer">
+              <td></td>
+            </tr>
+            <tr>
+              <td><strong>Color:</strong> {{ pet?.color }}</td>
+            </tr>
+            <tr class="spacer">
+              <td></td>
+            </tr>
+            <tr>
+              <td><strong>Description:</strong> {{ pet?.description }}</td>
+            </tr>
+            <tr class="spacer">
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+        <div>
+          <button class="pet-adopt-button" v-on:click="adoptPet">Adopt</button>
         </div>
       </div>
     </div>
-  </template>
-  
+  </div>
+  <div class="container" v-else>
+    <div class="row">
+      <div class="col">
+        <button class="go-back-button" @click="$router.push(`/pets`)">Back</button>
+        <div class="image-container">
+          <img :src="pet.profilePic" alt="Profile Picture" class="dog-pic-no-adopt" />
+
+        </div>
+      </div>
+      <div class="col">
+        <h1 class="name-of-pet">{{ pet?.name }}</h1>
+      </div>
+      <div class="col">
+        <table class="pet-stuff">
+          <thead>
+            <tr>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="spacer">
+              <td></td>
+            </tr>
+            <tr>
+              <td><strong>Age:</strong> {{ pet?.age }} years old</td>
+            </tr>
+            <tr class="spacer">
+              <td></td>
+            </tr>
+            <tr>
+              <td><strong>Breed:</strong> {{ pet?.breed }}</td>
+            </tr>
+            <tr class="spacer">
+              <td></td>
+            </tr>
+            <tr>
+              <td><strong>Size:</strong> {{ pet?.petSize }}</td>
+            </tr>
+            <tr class="spacer">
+              <td></td>
+            </tr>
+            <tr>
+              <td><strong>Gender:</strong> {{ pet?.gender }}</td>
+            </tr>
+            <tr class="spacer">
+              <td></td>
+            </tr>
+            <tr>
+              <td><strong>Color:</strong> {{ pet?.color }}</td>
+            </tr>
+            <tr class="spacer">
+              <td></td>
+            </tr>
+            <tr>
+              <td><strong>Description:</strong> {{ pet?.description }}</td>
+            </tr>
+            <tr class="spacer">
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+        <div>
+          <button class="pet-adopt-button" v-on:click="handleAdoptClick">Adopt</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
 
 <script>
 import petService from '../services/PetService.js';
 import Pet from '../components/PetDetails.vue';
 
-export default  {
-    components: {
-        Pet
-    },
-    data() {
-        return {
-            pet: {}
-        }
-    },
-    created() {
-        petService.getPet(this.$route.params.id)
-        .then(response => {
-            this.pet = response.data;
-        })
-    },
-    methods: {
-        adoptPet() {
-            petService.adoptPet(this.pet.id, this.pet);
-        },
-        navigateToPets() {
-          window.location.reload();
-        },
-        handleAdoptClick() {
-            this.adoptPet();
-            this.navigateToPets();
-        }
-
+export default {
+  components: {
+    Pet
+  },
+  data() {
+    return {
+      pet: {}
     }
+  },
+  created() {
+    petService.getPet(this.$route.params.id)
+      .then(response => {
+        this.pet = response.data;
+      })
+  },
+  methods: {
+    adoptPet() {
+      petService.adoptPet(this.pet.id, this.pet);
+    },
+    navigateToPets() {
+      window.location.reload();
+    },
+    handleAdoptClick() {
+      this.adoptPet();
+      this.navigateToPets();
+    }
+
+  }
 }
 
 </script>
 
 <style scoped>
-
 .fa-heart {
-  color: rgb(252, 100, 100); 
+  color: rgb(252, 100, 100);
   position: absolute;
   top: 60px;
   right: 20px;
@@ -142,7 +193,7 @@ export default  {
   font-weight: bold;
   top: 87px;
   right: 22px;
-transform: rotate(25deg);
+  transform: rotate(25deg);
 }
 
 .container {
@@ -152,7 +203,7 @@ transform: rotate(25deg);
 .row {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px; 
+  gap: 20px;
 }
 
 .col {
@@ -174,8 +225,8 @@ transform: rotate(25deg);
 
 
 .dog-pic {
-  width: 100%; 
-  height: auto; 
+  width: 100%;
+  height: auto;
   border: solid #FF5722 5px;
   border-radius: 25px;
   object-fit: cover;
@@ -183,8 +234,8 @@ transform: rotate(25deg);
 }
 
 .dog-pic-no-adopt {
-  width: 100%; 
-  height: auto; 
+  width: 100%;
+  height: auto;
   border: solid #FF5722 5px;
   border-radius: 25px;
   object-fit: cover;
@@ -210,7 +261,7 @@ transform: rotate(25deg);
 .pet-stuff {
   border: 5px solid #607D8B;
   border-radius: 8px;
-  width: 500px; 
+  width: 500px;
   margin-top: 30px;
   background-color: #fff;
   border-spacing: 0 10px;
@@ -253,7 +304,4 @@ tbody tr {
 .spacer td {
   background-color: #fff;
 }
-
-
-
 </style>

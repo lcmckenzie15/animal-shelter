@@ -1,6 +1,6 @@
 <template>
   <div class="pet-card">
-    <img :src="pet.profilePic" :alt="`${pet.name}'s profile picture`" class="pet-image" />
+    <img :src="pet.profilePic" :alt="`${pet.name}'s profile picture`" class="pet-image"/>
     <div class="pet-details">
       <h2 class="pet-name">{{ pet.name }}</h2>
     </div>

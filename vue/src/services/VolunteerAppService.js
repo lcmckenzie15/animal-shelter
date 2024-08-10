@@ -7,7 +7,11 @@ export default{
         return axios.post('/registration', app);
     },
 
-    get(params) {
-        return axios.get('/registration', params);
+    getRegistrations(params) {
+        return axios.get('/registration/forms', { params });
+    },
+
+    getRegistrationById(id) {
+        return axios.get(`registration/forms/${id}`);
     }
 };
