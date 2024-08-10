@@ -7,10 +7,10 @@
                         <h3 class="text-center">Pet Information</h3>
                         <p class="text-center">Please fill in the form below with the pet's details.</p>
 
-                        <form class="requires-validation form-rounded" novalidate>
+                        <form class="requires-validation form-rounded" novalidate v-on:submit.prevent="submitPet">
                             <div class="col-md-12 mb-4">
                                 <label for="species" class="form-label">Species:</label>
-                                <select class="form-select" id="species" required>
+                                <select class="form-select" id="species" required v-model="pet.species">
                                     <option selected disabled>Species</option>
                                     <option>Cat</option>
                                     <option>Dog</option>
@@ -21,7 +21,7 @@
 
                             <div class="col-md-12 mb-4">
                                 <label for="gender" class="form-label">Gender:</label>
-                                <select class="form-select" id="gender" required>
+                                <select class="form-select" id="gender" required v-model="pet.gender">
                                     <option selected disabled>Gender</option>
                                     <option>Male</option>
                                     <option>Female</option>
@@ -32,28 +32,28 @@
 
                             <div class="col-md-12 mb-4">
                                 <label for="age" class="form-label">Age:</label>
-                                <input type="number" class="form-control" id="age" min="1" max="20" required>
+                                <input type="number" class="form-control" id="age" min="1" max="20" required v-model="pet.age">
                                 <div class="valid-feedback">Age is valid!</div>
                                 <div class="invalid-feedback">Please enter a valid age.</div>
                             </div>
 
                             <div class="col-md-12 mb-4">
                                 <label for="name" class="form-label">Name:</label>
-                                <input type="text" class="form-control" id="name" required>
+                                <input type="text" class="form-control" id="name" required v-model="pet.name">
                                 <div class="valid-feedback">Name is valid!</div>
                                 <div class="invalid-feedback">Please enter a name.</div>
                             </div>
 
                             <div class="col-md-12 mb-4">
                                 <label for="breed" class="form-label">Breed:</label>
-                                <input type="text" class="form-control" id="breed" required>
+                                <input type="text" class="form-control" id="breed" required v-model="pet.breed">
                                 <div class="valid-feedback">Breed is valid!</div>
                                 <div class="invalid-feedback">Please enter a breed.</div>
                             </div>
 
                             <div class="col-md-12 mb-4">
                                 <label for="size" class="form-label">Size:</label>
-                                <select class="form-select" id="size" required>
+                                <select class="form-select" id="size" required v-model="pet.petSize">
                                     <option selected disabled>Size</option>
                                     <option>Small</option>
                                     <option>Medium</option>
@@ -66,18 +66,20 @@
 
                             <div class="col-md-12 mb-4">
                                 <label for="color" class="form-label">Color:</label>
-                                <input type="text" class="form-control" id="color" required>
+                                <input type="text" class="form-control" id="color" required v-model="pet.color">
                                 <div class="valid-feedback">Color is valid!</div>
                                 <div class="invalid-feedback">Please enter a color.</div>
                             </div>
 
                             <div class="col-md-12 mb-4">
                                 <label for="description" class="form-label">Description:</label>
-                                <textarea class="form-control" id="description" rows="3" required></textarea>
+                                <textarea class="form-control" id="description" rows="3" required v-model="pet.description"></textarea>
                                 <div class="valid-feedback">Description is valid!</div>
                                 <div class="invalid-feedback">Please enter a description.</div>
                             </div>
 
+                            <input type="file" id="picture" name="picture-upload" v-on:click.prevent="openUploadWidget" required>
+                            <!-- {{ pet.profile_pic }} -->
                             <div class="form-button mt-4">
                                 <button id="submit" type="submit" class="btn btn-submit">Submit</button>
                             </div>
@@ -91,14 +93,48 @@
 </template>
 
 <script>
+import PetService from '../services/PetService';
+
 export default {
     data() {
         return {
-            // Add data if needed
+            pet: {
+                species: '',
+                gender: '',
+                age: '',
+                name: '',
+                breed: '',
+                petSize: '',
+                color: '',
+                description: '',
+                profilePic: ''
+            }
         };
     },
     methods: {
-        // Add methods if needed
+        openUploadWidget(){
+            console.log("Hits openUploadWidget method");
+            const widget = window.cloudinary.createUploadWidget(
+                {cloudName: "df1ugxbgd", uploadPreset: "add-new-pet"},
+                (error, result) => {
+                    if (!error && result && result.event === 'success'){
+                        console.log("Done uploading . . .", result.info);
+                        this.pet.profilePic = result.info.secure_url;
+                    }
+                }
+            );
+
+            widget.open();
+        },
+
+        submitPet() {
+            PetService.addNewPet(this.pet).then((response) => {
+                if (response.status == 201) {
+                    this.pet = {};
+                    $router.push(`/pets`);
+                }
+            });
+        }
     }
 };
 </script>

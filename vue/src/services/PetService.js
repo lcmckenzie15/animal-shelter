@@ -10,5 +10,9 @@ export default {
 
     adoptPet(id, pet) {
         return axios.put(`/pets/${id}`, pet);
+    },
+
+    addNewPet(pet) {
+        return axios.post("/pets", pet);
     }
 }
