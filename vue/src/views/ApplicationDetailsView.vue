@@ -35,7 +35,7 @@
         </div>
         <div class="button-group">
             <button class="approve-btn" @click="approveRegistration">Approve</button>
-            <button class="deny-btn">Deny</button>
+            <button class="deny-btn" @click="denyRegistration">Deny</button>
         </div>
         <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div>
     </div>
@@ -43,20 +43,25 @@
 
 <script>
 import VolunteerAppService from '../services/VolunteerAppService.js';
-import ApproveVolunteers from '../components/ApproveVolunteers.vue';
+import AuthService from '../services/AuthService.js';
 
 export default {
     data() {
         return {
+            user: {
+                username: '',
+                password: 'password',
+                confirmPassword: 'password',
+                role: 'ROLE_USER',
+            },
             registration: {},
-            errorMessage: '' // To store error messages
+            errorMessage: ''
         }
     },
     created() {
         VolunteerAppService.getRegistrationById(this.$route.params.id)
             .then(response => {
                 this.registration = response.data;
-                this.isApproved = this.registration.status === 'approved';
             })
             .catch(error => {
                 console.error('Error fetching registration:', error);
@@ -65,22 +70,47 @@ export default {
     },
     methods: {
         approveRegistration() {
-            if (this.registration.status !== 'pending') {
+            if (this.registration.status !== 'pending' && `${this.registration.status}` !== 'Denied') {
                 this.errorMessage = 'This application is already approved.';
                 return;
+
             }
 
-            VolunteerAppService.updateRegistrationStatus(this.$route.params.id, 'approved')
+            this.registration.status = 'Approved';
+
+            VolunteerAppService.updateRegistrationStatus(this.$route.params.id, this.registration)
                 .then(() => {
-                    this.registration.status = 'approved';
-                    this.isApproved = true;
-                    this.errorMessage = ''; // Clear error message on success
+                    this.user.username = this.registration.email;
+                    AuthService.register(this.user);
+
+                    this.errorMessage = '';
                 })
                 .catch(error => {
                     console.error('Error updating registration status:', error);
                     this.errorMessage = 'There was an error approving the registration. Please try again.';
                 });
+        },
+
+        denyRegistration() {
+            if (this.registration.status !== 'pending' && `${this.registration.status}` !== 'Approved') {
+                this.errorMessage = 'This application is already denied.';
+                return;
+
+            }
+
+            this.registration.status = 'Denied';
+
+            VolunteerAppService.updateRegistrationStatus(this.$route.params.id, this.registration)
+                .then(() => {
+                    this.errorMessage = '';
+                })
+                .catch(error => {
+                    console.error('Error updating registration status:', error);
+                    this.errorMessage = 'There was an error denying the registration. Please try again.';
+                });
+
         }
+
     }
 }
 </script>
@@ -106,7 +136,9 @@ body {
 }
 
 .error-message {
-    color: #d9534f; /* Red color for error messages */
+    color: white;
+    background-color: #d9534f;
+
     margin-top: 20px;
     text-align: center;
     font-size: 18px;

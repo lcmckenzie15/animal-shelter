@@ -27,7 +27,8 @@ public class JdbcRegistrationDao implements RegistrationDao {
         List<Registration> registrations = new ArrayList<>();
         String sql = "SELECT registration_id, email, phone_number, date_of_birth, first_name, last_name, status " +
                 "FROM registration " +
-                "ORDER BY last_name;";
+                "WHERE status != 'Denied' " +
+                "ORDER BY status DESC;";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
             while (results.next()) {
@@ -108,6 +109,7 @@ public class JdbcRegistrationDao implements RegistrationDao {
         Registration registration = new Registration();
         registration.setRegistrationId(results.getInt("registration_id"));
         registration.setEmail(results.getString("email"));
+        registration.setPhoneNumber(results.getString("phone_number"));
         registration.setDateOfBirth(results.getDate("date_of_birth").toLocalDate());
         registration.setFirstName(results.getString("first_name"));
         registration.setLastName(results.getString("last_name"));
