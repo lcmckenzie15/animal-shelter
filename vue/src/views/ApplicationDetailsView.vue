@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1 class="text-center">Application Details</h1>
+        <h1 class="header text-center">Application Details</h1>
     </div>
     <div class="container">
         <div class="details-box">
@@ -34,45 +34,107 @@
             </table>
         </div>
         <div class="button-group">
-            <button class="approve-btn">Approve</button>
+            <button class="approve-btn" @click="approveRegistration">Approve</button>
             <button class="deny-btn">Deny</button>
         </div>
+        <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div>
     </div>
 </template>
 
 <script>
 import VolunteerAppService from '../services/VolunteerAppService.js';
-import Registration from '../components/ApproveVolunteers.vue';
+import ApproveVolunteers from '../components/ApproveVolunteers.vue';
 
 export default {
-    components: {
-        Registration
-    },
     data() {
         return {
-            registration: {}
+            registration: {},
+            errorMessage: '' // To store error messages
         }
     },
     created() {
         VolunteerAppService.getRegistrationById(this.$route.params.id)
             .then(response => {
                 this.registration = response.data;
+                this.isApproved = this.registration.status === 'approved';
             })
+            .catch(error => {
+                console.error('Error fetching registration:', error);
+                this.errorMessage = 'There was an error fetching the registration details. Please try again.';
+            });
     },
+    methods: {
+        approveRegistration() {
+            if (this.registration.status !== 'pending') {
+                this.errorMessage = 'This application is already approved.';
+                return;
+            }
+
+            VolunteerAppService.updateRegistrationStatus(this.$route.params.id, 'approved')
+                .then(() => {
+                    this.registration.status = 'approved';
+                    this.isApproved = true;
+                    this.errorMessage = ''; // Clear error message on success
+                })
+                .catch(error => {
+                    console.error('Error updating registration status:', error);
+                    this.errorMessage = 'There was an error approving the registration. Please try again.';
+                });
+        }
+    }
 }
 </script>
-
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap');
+
+*,
+body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.header {
+    text-align: center;
+    color: #607D8B;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-size: 38px;
+    font-weight: 500;
+}
+
+.error-message {
+    color: #d9534f; /* Red color for error messages */
+    margin-top: 20px;
+    text-align: center;
+    font-size: 18px;
+}
+
+html,
+body {
+    height: 100%;
+    background-color: #152733;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
 .container {
     max-width: 600px;
-    margin: auto;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #607D8B;
+    border-radius: 10px;
 }
 
 .details-box {
-    border: 2px solid black;
+    border: 1px solid #455A64;
     border-radius: 10px;
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: #455A64;
+    color: white;
 }
 
 table {
@@ -83,13 +145,16 @@ table {
 td strong {
     text-align: left;
     display: inline-block;
-    width: 150px;
+    width: 200px;
     vertical-align: middle;
+    color: #fff;
+    padding-bottom: 15px;
 }
 
 td:last-child {
     text-align: left;
     padding-left: 20px;
+    color: #e0e0e0;
 }
 
 .button-group {
@@ -99,25 +164,33 @@ td:last-child {
 
 .approve-btn,
 .deny-btn {
-    background-color: #007bff;
+    background-color: #fff;
     border: none;
-    color: white;
     padding: 10px 20px;
-    margin: 5px;
-    border-radius: 5px;
+    margin-left: 35px;
+    margin-right: 50px;
+    border-radius: 6px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.approve-btn {
+    background-color: white;
+    color: #607D8B;
 }
 
 .deny-btn {
-    background-color: #dc3545;
+    background-color: #455A64;
+    color: #fff;
 }
 
 .approve-btn:hover {
-    background-color: #0056b3;
+    background-color: #07d44b;
+    color: #fff;
 }
 
 .deny-btn:hover {
-    background-color: #c82333;
+    background-color: #d9534f;
 }
 </style>

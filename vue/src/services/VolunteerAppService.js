@@ -13,5 +13,8 @@ export default{
 
     getRegistrationById(id) {
         return axios.get(`registration/forms/${id}`);
+    },
+    updateRegistrationStatus(id, status) {
+        return axios.put(`${API_URL}/registrations/forms/${id}`, { status });
     }
 };

@@ -58,6 +58,8 @@ public class RegistrationController {
         } catch(DaoException e){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Registration form not found.");
         }
+
+        
     }
 
 
