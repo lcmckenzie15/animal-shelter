@@ -1,4 +1,9 @@
 <template>
+    <!-- <div class="alert alert-danger alert-dismissible" v-if="showError">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <strong>Error!</strong> Please check that all fields are completed.
+    </div> -->
+    
     <div class="form-body">
         <div class="row">
             <div class="form-holder">
@@ -79,7 +84,7 @@
                             </div>
 
                             <input type="file" id="picture" name="picture-upload" v-on:click.prevent="openUploadWidget" required>
-                            <!-- {{ pet.profile_pic }} -->
+                            {{ pet.profilePic }}
                             <div class="form-button mt-4">
                                 <button id="submit" type="submit" class="btn btn-submit">Submit</button>
                             </div>
@@ -89,6 +94,11 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="alert alert-danger alert-dismissible" v-if="showError">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <strong>Error!</strong> Please check that all fields are completed.
     </div>
 </template>
 
@@ -108,7 +118,8 @@ export default {
                 color: '',
                 description: '',
                 profilePic: ''
-            }
+            },
+            showError: false
         };
     },
     methods: {
@@ -128,11 +139,32 @@ export default {
         },
 
         submitPet() {
+            if (this.pet.species=='' || this.pet.gender=='' || this.pet.age==0 || this.pet.name=='' 
+                || this.pet.breed=='' || this.pet.petSize=='' || this.pet.color=='' || this.pet.profilePic==''){
+                    // window.location.reload();
+                    this.showError=true;
+                    return
+                } 
             PetService.addNewPet(this.pet).then((response) => {
-                if (response.status == 201) {
-                    this.pet = {};
-                    $router.push(`/pets`);
+                console.log(response);
+                
+                if (response.status == 200) {
+                    this.pet = {
+                    species: '',
+                    gender: '',
+                    age: '',
+                    name: '',
+                     breed: '',
+                    petSize: '',
+                    color: '',
+                    description: '',
+                    profilePic: ''
+                    };
+                    this.$router.push('/pets');
                 }
+            
+            }).catch((error) => {
+                this.showError = true;
             });
         }
     }
@@ -269,5 +301,14 @@ body {
 
 label{
     color: rgb(255, 255, 255);
+}
+
+input[type='file'] {
+    color: rgba(0, 0, 0, 0);
+    
+}
+
+#picture:hover {
+    color: rgba(0, 0, 0, 0);
 }
 </style>
