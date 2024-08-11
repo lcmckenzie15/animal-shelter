@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
+import com.techelevator.exception.DuplicateEmailException;
 import com.techelevator.model.Pet;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
@@ -72,6 +73,29 @@ public class JdbcPetDao implements PetDao {
             throw new DaoException("Data integrity violation", e);
         }
         return updatedPet;
+    }
+
+    @Override
+    public Pet createPet(Pet pet) {
+        Pet addedPet = null;
+        final String sql ="INSERT INTO pets(\n" +
+                "\tspecies, gender, age, name, breed, pet_size, color, description, profile_pic)\n" +
+                "\tVALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)" +
+                "RETURNING pet_id;";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, pet.getSpecies(),
+                    pet.getGender(), pet.getAge(), pet.getName(), pet.getBreed(),
+                    pet.getPetSize(), pet.getColor(), pet.getDescription(), pet.getProfilePic());
+            if (results.next()){
+                int petId = results.getInt("pet_id");
+                addedPet = this.getPetById(petId);
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Please verify that pet info is valid.", e);
+        }
+        return addedPet;
     }
 
     private Pet mapRowToPet(SqlRowSet rs) {
