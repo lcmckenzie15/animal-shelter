@@ -14,5 +14,9 @@ export default {
 
     addNewPet(pet) {
         return axios.post("/pets", pet);
+    },
+
+    getRandomPets() {
+        return axios.get('/pets/random');
     }
 }

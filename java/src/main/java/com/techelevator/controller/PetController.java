@@ -58,4 +58,9 @@ public class PetController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Please verify your pet info is valid.");
         }
     }
+
+    @RequestMapping(path = "/pets/random", method = RequestMethod.GET)
+    public List<Pet> randomPets() {
+        return petDao.get3RandomPets();
+    }
 }
