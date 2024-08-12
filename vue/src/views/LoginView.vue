@@ -19,7 +19,7 @@
         <label for="password">Password:</label>
         <input type="password" id="password" v-model="user.password" required />
       </div>
-      <button type="submit">Sign in</button>
+      <button class="cat" @click="changePassword">Sign in</button>
       <p id="volunteer-btn">Want to volunteer?<router-link id="register" v-bind:to="{ name: 'volunteer' }">Apply!</router-link></p>
       
     </form>
@@ -60,7 +60,18 @@ export default {
             this.invalidCredentials = true;
           }
         });
+    },
+
+    changePassword() {
+      if(changed_password == false) {
+        this.$router.push( {name: 'register'});
+      }
+      
+authService.updatePassword(this.user)
+
+
     }
+
   }
 };
 </script>

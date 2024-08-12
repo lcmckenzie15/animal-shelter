@@ -60,8 +60,8 @@ public class RegistrationController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Registration form not found.");
         }
 
-        
     }
+
 
 
 

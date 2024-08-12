@@ -70,5 +70,15 @@ public class AuthenticationController {
         }
     }
 
+    @RequestMapping(path = "/register/{id}", method = RequestMethod.PUT )
+    public User updateUserPassword(@PathVariable int id, @Valid @RequestBody UserNew user) {
+        try {
+            user.setUserId(id);
+            return userDao.updatePassword(user);
+        } catch(DaoException e){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "password not found.");
+        }
+    }
+
 }
 

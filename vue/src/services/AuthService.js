@@ -13,6 +13,9 @@ export default {
 
   loginAdmin(admin) {
     return axios.post('/login', admin)
-  }
+  },
 
+  updatePassword(user) {
+    return axios.put('/users/:id', user)
+  }
 }

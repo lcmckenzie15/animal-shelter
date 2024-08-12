@@ -128,7 +128,7 @@ button:hover {
 
 button {
  display: flex;
-margin-left: 116px;
+margin-left: 103px;
 font-size: 20px;
 margin-top: 30px;
 cursor: pointer; 

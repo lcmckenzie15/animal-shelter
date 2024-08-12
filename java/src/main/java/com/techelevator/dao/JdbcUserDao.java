@@ -6,6 +6,7 @@ import java.util.Objects;
 
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.RegisterUserDto;
+import com.techelevator.model.UserNew;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -27,7 +28,7 @@ public class JdbcUserDao implements UserDao {
     @Override
     public User getUserById(int userId) {
         User user = null;
-        String sql = "SELECT user_id, username, password_hash, role FROM users WHERE user_id = ?";
+        String sql = "SELECT user_id, username, password_hash, role, changed_password FROM users WHERE user_id = ?";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
             if (results.next()) {
@@ -88,12 +89,35 @@ public class JdbcUserDao implements UserDao {
         return newUser;
     }
 
+    @Override
+    public User updatePassword(UserNew user) {
+        User newPassword = null;
+       final String sql = "UPDATE users SET password_hash = ?, changed_password = true WHERE user_id = ?";
+        String password_hash = new BCryptPasswordEncoder().encode(user.getPassword());
+        try {
+            int numberOfRowsAffected = jdbcTemplate.update(sql, password_hash, user.getUserId());
+            if (numberOfRowsAffected == 0) {
+                throw new DaoException("Zero rows affected.");
+            } else {
+                newPassword = getUserById(user.getUserId());
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
+        return newPassword;
+        }
+
+
+
     private User mapRowToUser(SqlRowSet rs) {
         User user = new User();
         user.setId(rs.getInt("user_id"));
         user.setUsername(rs.getString("username"));
         user.setPassword(rs.getString("password_hash"));
         user.setAuthorities(Objects.requireNonNull(rs.getString("role")));
+        user.setChangedPassword(rs.getBoolean("changed_password"));
         user.setActivated(true);
         return user;
     }

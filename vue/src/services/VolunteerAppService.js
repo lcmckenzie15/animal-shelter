@@ -2,7 +2,7 @@ import axios from 'axios';
 
 
 
-export default{
+export default {
     create(app) {
         return axios.post('/registration', app);
     },
@@ -16,5 +16,10 @@ export default{
     },
     updateRegistrationStatus(id, registration) {
         return axios.put(`/registration/forms/${id}`, registration);
+    },
+
+    updateRegistrationPassword(id, registration) {
+        return axios.put(`/registration/forms/${id}`, registration);
     }
+
 };

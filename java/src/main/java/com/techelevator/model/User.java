@@ -12,17 +12,21 @@ public class User {
    private String username;
    @JsonIgnore
    private String password;
+
+   private boolean changedPassword;
    @JsonIgnore
    private boolean activated;
    private Set<Authority> authorities = new HashSet<>();
 
    public User() {}
 
-   public User(int id, String username, String password, String authorities) {
+
+   public User(int id, String username, String password, boolean changedPassword, String authorities) {
       this.id = id;
       this.username = username;
       this.password = password;
       if (authorities != null) this.setAuthorities(authorities);
+      this.changedPassword = changedPassword;
       this.activated = true;
    }
 
@@ -61,6 +65,15 @@ public class User {
    public Set<Authority> getAuthorities() {
       return authorities;
    }
+
+   public boolean isChangedPassword() {
+      return changedPassword;
+   }
+
+   public void setChangedPassword(boolean changedPassword) {
+      this.changedPassword = changedPassword;
+   }
+
 
    public void setAuthorities(Set<Authority> authorities) {
       this.authorities = authorities;
