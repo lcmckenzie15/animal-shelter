@@ -13,4 +13,6 @@ public interface PetDao {
     Pet updatePetStatus(Pet pet);
 
     Pet createPet(Pet pet);
+
+    List<Pet> get3RandomPets();
 }
