@@ -19,7 +19,7 @@
         <label for="password">Password:</label>
         <input type="password" id="password" v-model="user.password" required />
       </div>
-      <button class="cat" @click="changePassword">Sign in</button>
+      <button type="submit" @click="login">Sign in</button>
       <p id="volunteer-btn">Want to volunteer?<router-link id="register" v-bind:to="{ name: 'volunteer' }">Apply!</router-link></p>
       
     </form>
@@ -48,9 +48,14 @@ export default {
         .login(this.user)
         .then(response => {
           if (response.status == 200) {
+            console.log(response.data);
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
-            this.$router.push("/");
+            if (!response.data.user.changedPassword) {
+              this.$router.push({ name: "register" });
+            } else {
+              this.$router.push("/");
+            }
           }
         })
         .catch(error => {
