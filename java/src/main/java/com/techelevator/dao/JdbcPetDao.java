@@ -98,6 +98,28 @@ public class JdbcPetDao implements PetDao {
         return addedPet;
     }
 
+    @Override
+    public List<Pet> get3RandomPets(){
+        List<Pet> threePets = new ArrayList<>();
+        String sql = "SELECT pet_id, species, gender, age, name, breed, pet_size, color, description, profile_pic, is_adopted\n" +
+                "FROM pets\n" +
+                "WHERE is_adopted = false\n" +
+                "ORDER BY RANDOM()\n" +
+                "LIMIT 3;\n";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+            while (results.next()){
+                Pet randomPet = mapRowToPet(results);
+                threePets.add(randomPet);
+            }
+        }catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
+        return threePets;
+    }
+
     private Pet mapRowToPet(SqlRowSet rs) {
         Pet pet = new Pet();
         pet.setId(rs.getInt("pet_id"));
@@ -113,4 +135,5 @@ public class JdbcPetDao implements PetDao {
         pet.setAdopted(rs.getBoolean("is_adopted"));
         return pet;
     }
+
 }
