@@ -3,10 +3,10 @@ package com.techelevator.dao;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
+import com.techelevator.model.UserNew;
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.RegisterUserDto;
-import com.techelevator.model.UserNew;
+
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -60,7 +60,7 @@ public class JdbcUserDao implements UserDao {
     public User getUserByUsername(String username) {
         if (username == null) throw new IllegalArgumentException("Username cannot be null");
         User user = null;
-        String sql = "SELECT user_id, username, password_hash, role FROM users WHERE username = LOWER(TRIM(?));";
+        String sql = "SELECT user_id, username, password_hash, role, changed_password FROM users WHERE username = LOWER(TRIM(?));";
         try {
             SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, username);
             if (rowSet.next()) {
