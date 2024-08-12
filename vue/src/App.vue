@@ -27,34 +27,34 @@
     
     <router-view />
     <!-- <p style="background-image: url('../Pictures/Paw-Background.png');"></p> -->
-    <div class="container-fluid my-5 p-0">
+    <div class="fixed-bottom px-0">
       <footer class="text-center text-white mt-auto" style="background-color: #CFD8DC;">
         <!-- Grid container -->
-        <div class="container pt-4">
-          <section class="mb-4">
+        <div class="container pt-2">
+          <section class="mb-2">
             <!--social media icons-->
             <a class="btn btn-link btn-floating btn-lg m-1" href="#!" role="button" data-mdb-ripple-color="dark">
-              <i class="fab fa-facebook-f fa-2x" style="color: #3b5998;"></i>
+              <i class="fab fa-facebook-f fa-1x" style="color: #3b5998;"></i>
             </a>
             <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
               data-mdb-ripple-color="dark">
-              <i class="fab fa-twitter fa-2x" style="color: #55acee;"></i>
+              <i class="fab fa-twitter fa-1x" style="color: #55acee;"></i>
             </a>
             <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
               data-mdb-ripple-color="dark">
-              <i class="fab fa-youtube fa-2x" style="color: #ed302f;"></i>
+              <i class="fab fa-youtube fa-1x" style="color: #ed302f;"></i>
             </a>
             <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
               data-mdb-ripple-color="dark">
-              <i class="fab fa-instagram fa-2x" style="color: #ac2bac;"></i>
+              <i class="fab fa-instagram fa-1x" style="color: #ac2bac;"></i>
             </a>
             <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
               data-mdb-ripple-color="dark">
-              <i class="fab fa-linkedin-in fa-2x" style="color: #0082ca;"></i>
+              <i class="fab fa-linkedin-in fa-1x" style="color: #0082ca;"></i>
             </a>
             <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
               data-mdb-ripple-color="dark">
-              <i class="fab fa-reddit-alien fa-2x" style="color: #ff4500;"></i>
+              <i class="fab fa-reddit-alien fa-1x" style="color: #ff4500;"></i>
             </a>
           </section>
         </div>
@@ -92,7 +92,12 @@ export default {
 #capstone-app {
   background-image: url(@/Pictures/Paw-Background.png);
   filter: brightness(1.09);
+  height: 100vh;
 }
+.footer {
+            position: sticky;
+            bottom: 0;
+        }
 /* #login {
   padding-left: 500px !important;
 } */

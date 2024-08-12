@@ -13,21 +13,15 @@
     
     <div id="carousel1" class="carousel slide mx-2" data-bs-ride="carousel">
       
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carousel1" data-bs-slide-to="0" class="active"></button>
+      <!-- <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carousel1" data-bs-slide-to="0"></button>
         <button type="button" data-bs-target="#carousel1" data-bs-slide-to="1"></button>
         <button type="button" data-bs-target="#carousel1" data-bs-slide-to="2"></button>
-      </div>
+      </div> -->
       
       <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="@/Pictures/logo.png" alt="Pet 1" class="d-block w-100">
-        </div>
-        <div class="carousel-item">
-          <img src="@/Pictures/logo1.png" alt="Pet 2" class="d-block w-100">
-        </div>
-        <div class="carousel-item">
-          <img src="@/Pictures/logo2.png" alt="Pet 3" class="d-block w-100">
+        <div class="carousel-item" v-for="(pet, index) in pets" :key="pet.id" :class="{'active': index == 0}">
+          <img v-bind:src="pet.profilePic" alt="Pet 1" class="d-block w-100">
         </div>
       </div>
       
@@ -42,7 +36,20 @@
 </template>
 
 <script>
+import PetService from '../services/PetService';
+
 export default {
+  data(){
+    return {
+      pets: []
+    }
+  },
+  created(){
+    PetService.getRandomPets().then((response) =>  {
+      this.pets = response.data;
+    });
+    
+  }
 };
 </script>
 
@@ -52,13 +59,13 @@ p {
 }
 
 .carousel {
-  width: 300px;
+  width: 350px;
   height: 200px;
 }
 
 .carousel img {
-  width: 100%;
+  
   height: 100%;
-  object-fit: cover;
+ 
 }
 </style>
