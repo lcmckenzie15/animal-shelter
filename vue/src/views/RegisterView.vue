@@ -4,7 +4,7 @@
 </div>
   <div id="register" class="text-center">
     <form v-on:submit.prevent="register">
-      <h1>Volunteer Application</h1>
+      <h1>Please Change Your Password</h1>
       <div role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
@@ -20,8 +20,8 @@
         <label for="confirmPassword">Confirm Password:</label>
         <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
       </div>
-      <button type="submit">Apply</button>
-      <p id="login-btn">Already have an account?<router-link id="router-two" v-bind:to="{ name: 'login' }">Log in.</router-link></p>
+      <button type="submit">Update</button>
+      <!-- <p id="login-btn">Already have an account?<router-link id="router-two" v-bind:to="{ name: 'login' }">Log in.</router-link></p> -->
     </form>
   </div>
 </template>
@@ -79,14 +79,6 @@ export default {
 </script>
 
 <style scoped>
-:root {
-  --primary-color: #607D8B;
-  --secondary-color: #CFD8DC;
-  --accent-color: #FF5722;
-  --background-color: #ECEFF1;
-  --text-color: #263238;
-}
-
 #login-btn {
   color: var(--text-color);
  margin-left: -18px;
@@ -129,7 +121,7 @@ h1 {
 }
 
 button:hover {
-  color: var(--accent-color);
+  color: #FF5722;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
   transform: translateY(-5px);
 }

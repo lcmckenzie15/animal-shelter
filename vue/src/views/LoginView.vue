@@ -20,7 +20,7 @@
         <input type="password" id="password" v-model="user.password" required />
       </div>
       <button type="submit">Sign in</button>
-      <p id="volunteer-btn">Want to volunteer?<router-link id="register" v-bind:to="{ name: 'register' }">Apply!</router-link></p>
+      <p id="volunteer-btn">Want to volunteer?<router-link id="register" v-bind:to="{ name: 'volunteer' }">Apply!</router-link></p>
       
     </form>
   </div>
