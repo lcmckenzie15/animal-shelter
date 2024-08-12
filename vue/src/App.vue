@@ -1,69 +1,67 @@
 <template>
-  <div id="capstone-app">
+  <div id="capstone-app" class="d-flex flex-column min-vh-100">
     <nav id="nav" class="navbar navbar-expand-sm" style="background-color: #607D8B;">
       <a href="/" id="home-page">
         <img id="home-image" src="@/Pictures/logo1.png" alt="Home" style="width:200px; background-color: #CFD8DC;"
           class="rounded-circle">
       </a>
-      <div class="d-flex justify-content-center">
+      <div class="d-flex justify-content-start flex-grow-1">
         <router-link class="nav-item text-decoration-none text-light px-5 fs-1"
           v-bind:to="{ name: 'home' }">Home</router-link>
         <router-link class="nav-item text-decoration-none text-light px-5 fs-1"
           v-bind:to="{ name: 'pets' }">Adopt</router-link>
         <router-link class="nav-item text-decoration-none text-light px-5 fs-1"
           v-bind:to="{ name: 'volunteer' }">Volunteer</router-link>
-      </div>
-      <div>
         <router-link id="approve" class="nav-item text-decoration-none text-light px-5 fs-1"
           v-bind:to="{ name: 'applications' }" v-if="isAdmin()">Applications</router-link>
       </div>
-      <div>
+      <div class="d-flex justify-content-end">
         <router-link id="login" class="nav-item text-decoration-none text-light px-5 fs-1" v-bind:to="{ name: 'login' }"
           v-if="$store.state.token == ''">Login</router-link>
         <router-link id="login" class="nav-item text-decoration-none text-light px-5 fs-1"
           v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
       </div>
     </nav>
-    
-    <router-view />
-    <!-- <p style="background-image: url('../Pictures/Paw-Background.png');"></p> -->
-    <div class="fixed-bottom px-0">
-      <footer class="text-center text-white mt-auto" style="background-color: #CFD8DC;">
-        <!-- Grid container -->
-        <div class="container pt-2">
-          <section class="mb-2">
-            <!--social media icons-->
-            <a class="btn btn-link btn-floating btn-lg m-1" href="#!" role="button" data-mdb-ripple-color="dark">
-              <i class="fab fa-facebook-f fa-1x" style="color: #3b5998;"></i>
-            </a>
-            <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
-              data-mdb-ripple-color="dark">
-              <i class="fab fa-twitter fa-1x" style="color: #55acee;"></i>
-            </a>
-            <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
-              data-mdb-ripple-color="dark">
-              <i class="fab fa-youtube fa-1x" style="color: #ed302f;"></i>
-            </a>
-            <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
-              data-mdb-ripple-color="dark">
-              <i class="fab fa-instagram fa-1x" style="color: #ac2bac;"></i>
-            </a>
-            <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
-              data-mdb-ripple-color="dark">
-              <i class="fab fa-linkedin-in fa-1x" style="color: #0082ca;"></i>
-            </a>
-            <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
-              data-mdb-ripple-color="dark">
-              <i class="fab fa-reddit-alien fa-1x" style="color: #ff4500;"></i>
-            </a>
-          </section>
-        </div>
-        <!-- Copyright -->
-        <div class="text-center text-light p-3" style="background-color: #607D8B;">
-          TechElevator © 2024 Copyright
-        </div>
-      </footer>
+
+    <div class="flex-grow-1">
+      <router-view />
     </div>
+
+    <footer class="text-center text-white mt-auto" style="background-color: #CFD8DC;">
+      <!-- Grid container -->
+      <div class="container pt-2">
+        <section class="mb-2">
+          <!--social media icons-->
+          <a class="btn btn-link btn-floating btn-lg m-1" href="#!" role="button" data-mdb-ripple-color="dark">
+            <i class="fab fa-facebook-f fa-1x" style="color: #3b5998;"></i>
+          </a>
+          <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+            data-mdb-ripple-color="dark">
+            <i class="fab fa-twitter fa-1x" style="color: #55acee;"></i>
+          </a>
+          <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+            data-mdb-ripple-color="dark">
+            <i class="fab fa-youtube fa-1x" style="color: #ed302f;"></i>
+          </a>
+          <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+            data-mdb-ripple-color="dark">
+            <i class="fab fa-instagram fa-1x" style="color: #ac2bac;"></i>
+          </a>
+          <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+            data-mdb-ripple-color="dark">
+            <i class="fab fa-linkedin-in fa-1x" style="color: #0082ca;"></i>
+          </a>
+          <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+            data-mdb-ripple-color="dark">
+            <i class="fab fa-reddit-alien fa-1x" style="color: #ff4500;"></i>
+          </a>
+        </section>
+      </div>
+      <!-- Copyright -->
+      <div class="text-center text-light p-3" style="background-color: #607D8B;">
+        TechElevator © 2024 Copyright
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -81,7 +79,6 @@ export default {
     },
   }
 };
-
 </script>
 
 <style>
@@ -92,13 +89,15 @@ export default {
 #capstone-app {
   background-image: url(@/Pictures/Paw-Background.png);
   filter: brightness(1.09);
-  height: 100vh;
+  min-height: 100vh;
 }
-.footer {
-            position: sticky;
-            bottom: 0;
-        }
-/* #login {
-  padding-left: 500px !important;
-} */
+
+footer {
+  background-color: #CFD8DC;
+  padding: 10px 0;
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
+}
 </style>
