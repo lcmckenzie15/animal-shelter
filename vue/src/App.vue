@@ -24,9 +24,9 @@
           v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
       </div>
     </nav>
-    <p style="background-image: url('@/Pictures/Paw-Background.png');"></p>
+    
     <router-view />
-    <!-- <p style="background-image: url('@/Pictures/Paw-Background.png');"></p> -->
+    <!-- <p style="background-image: url('../Pictures/Paw-Background.png');"></p> -->
     <div class="container-fluid my-5 p-0">
       <footer class="text-center text-white mt-auto" style="background-color: #CFD8DC;">
         <!-- Grid container -->
@@ -89,6 +89,10 @@ export default {
   color: #FF5722 !important;
 }
 
+#capstone-app {
+  background-image: url(@/Pictures/Paw-Background.png);
+  filter: brightness(1.09);
+}
 /* #login {
   padding-left: 500px !important;
 } */

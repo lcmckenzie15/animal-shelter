@@ -1,6 +1,6 @@
 <template>
-  <div>
-  </div>
+  <div class="background-image">
+  
   <div class="container-fluid p-5 text-dark text-center">
     <h1>AdopTE</h1>
     <p>Welcome to AdopTE, where every pet's journey to a loving home begins. 
@@ -15,9 +15,24 @@
     <div class="col-sm-3 text-center border p-5">Picture 2</div>
     <div class="col-sm-3 text-center border p-5">Picture 3</div>
   </div>
+
+</div>
 </template>
 
 <script>
 export default {
 };
 </script>
+
+<style scoped>
+
+/* .background-image {
+  background-image: url(@/Pictures/Paw-Background.png);
+  
+} */
+
+p {
+  font-weight: 600;
+}
+
+</style>
