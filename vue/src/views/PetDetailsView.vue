@@ -1,4 +1,13 @@
 <template>
+
+  <svg class="dn">
+  <defs>
+    <symbol id="svg-confetti">
+      <path fill="currentColor" d="M-.017 6.91L4.035.012l2.587 1.52L2.57 8.43z"></path>
+    </symbol>
+  </defs>
+</svg>
+
   <div class="container" v-if="pet.adopted">
     <div class="row">
       <div class="col">
@@ -64,7 +73,7 @@
           </tbody>
         </table>
         <div class="button-container">
-          <button class="pet-adopt-button" v-on:click="handleAdoptClick">Adopt</button>
+          <button class="pet-adopt-button" v-on:click="handleAdoptClick" data-toggle="modal" data-target="#congratsModel">Adopt</button>
           <button class="pet-update-button" @click="$router.push(`/pets/${pet.id}/edit`)">Update</button>
         </div>
       </div>
@@ -173,6 +182,58 @@ export default {
 
   }
 }
+// function randomize(collection) {
+//   var randomNumber = Math.floor(Math.random() * collection.length);
+//   return collection[randomNumber];
+// }
+
+// function confetti() {
+//   $(".confetti").remove();
+//   var $confettiItems = $('<div class="confetti"></div>'),
+//     colors = ["#3b5692", "#f9c70b", "#00abed", "#ea6747"],
+//     height = 6.6,
+//     width = 6.6;
+
+//   var scale, $confettiItem;
+
+//   for (var i = 0; i < 100; i++) {
+//     scale = Math.random() * 1.75 + 1;
+//     $confettiItem = $(
+//       "<svg class='confetti-item' width='" +
+//         width * scale +
+//         "' height='" +
+//         height * scale +
+//         "' viewbox='0 0 " +
+//         width +
+//         " " +
+//         height +
+//         "'>\n  <use transform='rotate(" +
+//         Math.random() * 360 +
+//         ", " +
+//         width / 2 +
+//         ", " +
+//         height / 2 +
+//         ")' xlink:href='#svg-confetti' />\n</svg>"
+//     );
+//     $confettiItem.css({
+//       animation:
+//         Math.random() +
+//         2 +
+//         "s " +
+//         Math.random() * 2 +
+//         "s confetti-fall ease-in both",
+//       color: randomize(colors),
+//       left: Math.random() * 100 + "vw"
+//     });
+//     $confettiItems.append($confettiItem);
+//   }
+//   $("body").append($confettiItems);
+// }
+
+// $("#congratsModal").on("shown.bs.modal", function() {
+//   confetti();
+// });
+
 
 </script>
 
@@ -312,4 +373,38 @@ tbody tr {
 .spacer td {
   background-color: #fff;
 }
+body, html {
+  width: 100%;
+  height: 100%;
+  }
+
+.confetti {
+  left: 0;
+  pointer-events: none ;
+  position: fixed;
+  top: 0;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+  height: 100%;
+  width: 100%;
+}
+
+
+.confetti-item {
+  position: absolute;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-100%)
+  }
+  95%{
+    animation-timing-function: ease-in-out;
+    transform: translateY(calc(100vh - 55%))
+  }
+  100% {
+    transform: translateY(calc(150vh - 65%))
+  }}
 </style>
