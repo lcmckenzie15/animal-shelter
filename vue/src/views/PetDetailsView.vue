@@ -1,12 +1,12 @@
 <template>
 
-  <svg class="dn">
-  <defs>
-    <symbol id="svg-confetti">
+  <!-- <svg class="dn">
+  <defs> -->
+    <!-- <symbol id="svg-confetti">
       <path fill="currentColor" d="M-.017 6.91L4.035.012l2.587 1.52L2.57 8.43z"></path>
     </symbol>
   </defs>
-</svg>
+</svg> -->
 
   <div class="container" v-if="pet.adopted">
     <div class="row">
@@ -152,6 +152,7 @@
 <script>
 import petService from '../services/PetService.js';
 import Pet from '../components/PetDetails.vue';
+import confetti from 'canvas-confetti';
 
 export default {
   components: {
@@ -176,8 +177,19 @@ export default {
       window.location.reload();
     },
     handleAdoptClick() {
+      this.launchConfetti();
       this.adoptPet();
-      this.navigateToPets();
+      setTimeout(()=>{
+        this.navigateToPets();
+      }, 1000);
+      
+    },
+    launchConfetti() {
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: {y: 0.6}
+      });
     }
 
   }
