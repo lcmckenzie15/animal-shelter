@@ -10,6 +10,7 @@ CREATE TABLE users (
 	username varchar(50) NOT NULL UNIQUE,
 	password_hash varchar(200) NOT NULL,
 	role varchar(50) NOT NULL,
+	changed_password boolean DEFAULT false,
 --	phone_number varchar(12) NOT NULL,
 --	date_of_birth DATE NOT NULL,
 --	first_name varchar(25) NOT NULL,

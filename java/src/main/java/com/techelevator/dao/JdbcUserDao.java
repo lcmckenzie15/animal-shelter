@@ -3,9 +3,10 @@ package com.techelevator.dao;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
+import com.techelevator.model.ChangePasswordRequest;
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.RegisterUserDto;
+
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -27,7 +28,7 @@ public class JdbcUserDao implements UserDao {
     @Override
     public User getUserById(int userId) {
         User user = null;
-        String sql = "SELECT user_id, username, password_hash, role FROM users WHERE user_id = ?";
+        String sql = "SELECT user_id, username, password_hash, role, changed_password FROM users WHERE user_id = ?";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
             if (results.next()) {
@@ -59,7 +60,7 @@ public class JdbcUserDao implements UserDao {
     public User getUserByUsername(String username) {
         if (username == null) throw new IllegalArgumentException("Username cannot be null");
         User user = null;
-        String sql = "SELECT user_id, username, password_hash, role FROM users WHERE username = LOWER(TRIM(?));";
+        String sql = "SELECT user_id, username, password_hash, role, changed_password FROM users WHERE username = LOWER(TRIM(?));";
         try {
             SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, username);
             if (rowSet.next()) {
@@ -88,12 +89,65 @@ public class JdbcUserDao implements UserDao {
         return newUser;
     }
 
+    @Override
+    public User updatePassword(User user, ChangePasswordRequest request) {
+
+        final String sql = "UPDATE users SET password_hash = ?, changed_password = true WHERE user_id = ?";
+        String password_hash = new BCryptPasswordEncoder().encode(request.getPassword());
+        try {
+            int numberOfRowsAffected = jdbcTemplate.update(sql, password_hash, user.getId());
+            if (numberOfRowsAffected == 0) {
+                throw new DaoException("Zero rows affected.");
+            } else {
+                return getUserById(user.getId());
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+    //    @Override
+//    public User updatePassword(UserNew user) {
+//        User newPassword = null;
+//       final String sql = "UPDATE users SET password_hash = ?, changed_password = true WHERE username = ?";
+//        String password_hash = new BCryptPasswordEncoder().encode(user.getPassword());
+//        try {
+//            int numberOfRowsAffected = jdbcTemplate.update(sql, password_hash, user.getUsername());
+//            if (numberOfRowsAffected == 0) {
+//                throw new DaoException("Zero rows affected.");
+//            } else {
+//                newPassword = getUserByUsername(user.getUsername());
+//            }
+//        } catch (CannotGetJdbcConnectionException e) {
+//            throw new DaoException("Unable to connect to server or database", e);
+//        } catch (DataIntegrityViolationException e) {
+//            throw new DaoException("Data integrity violation", e);
+//        }
+//        return newPassword;
+//        }
+
+
+
+
+
     private User mapRowToUser(SqlRowSet rs) {
         User user = new User();
         user.setId(rs.getInt("user_id"));
         user.setUsername(rs.getString("username"));
         user.setPassword(rs.getString("password_hash"));
         user.setAuthorities(Objects.requireNonNull(rs.getString("role")));
+        user.setChangedPassword(rs.getBoolean("changed_password"));
         user.setActivated(true);
         return user;
     }
