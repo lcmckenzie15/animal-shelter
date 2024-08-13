@@ -13,6 +13,7 @@ import VolunteerAppView from '../views/VolunteerAppView.vue';
 import PetFormView from '../views/PetFormView.vue';
 import ApproveVolunteersView from '../views/ApproveVolunteersView.vue';
 import ApplicationDetailsView from '../views/ApplicationDetailsView.vue';
+import UpdatePetListingView from '../views/UpdatePetListingView.vue';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -108,6 +109,14 @@ const routes = [
     name: 'application-details',
     component: ApplicationDetailsView,
     meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/pets/:id/edit',
+    name: 'update-pet-details',
+    component: UpdatePetListingView,
+    met: {
       requiresAuth: true
     }
   },

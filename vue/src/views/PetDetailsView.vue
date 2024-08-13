@@ -63,8 +63,9 @@
             </tr>
           </tbody>
         </table>
-        <div>
-          <button class="pet-adopt-button" v-on:click="adoptPet">Adopt</button>
+        <div class="button-container">
+          <button class="pet-adopt-button" v-on:click="handleAdoptClick">Adopt</button>
+          <button class="pet-update-button" @click="$router.push(`/pets/${pet.id}/edit`)">Update</button>
         </div>
       </div>
     </div>
@@ -130,14 +131,14 @@
             </tr>
           </tbody>
         </table>
-        <div>
+        <div class="button-container">
           <button class="pet-adopt-button" v-on:click="handleAdoptClick">Adopt</button>
+          <button class="pet-update-button" @click="$router.push(`/pets/${pet.id}/edit`)" v-if="$store.state.token != ''">Update</button>
         </div>
       </div>
     </div>
   </div>
 </template>
-
 
 <script>
 import petService from '../services/PetService.js';
@@ -223,7 +224,6 @@ export default {
   width: 500px;
 }
 
-
 .dog-pic {
   width: 100%;
   height: auto;
@@ -274,13 +274,21 @@ export default {
   color: #263238;
 }
 
-.pet-adopt-button {
+.button-container {
+  display: flex;
+  gap: 10px;
   margin-top: 20px;
-  font-size: 20px;
-  transition: all 0.3s ease;
 }
 
-.pet-adopt-button:hover {
+.pet-adopt-button,
+.pet-update-button {
+  font-size: 20px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.pet-adopt-button:hover,
+.pet-update-button:hover {
   color: #FF5722;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   transform: translateY(-5px);
