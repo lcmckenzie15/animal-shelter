@@ -41,7 +41,7 @@ public class PetController {
             pet.setId(id);
             return petDao.updatePetStatus(pet);
         }catch(DaoException e){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "pet not found!!");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Pet not found.");
         }
     }
 
@@ -62,5 +62,16 @@ public class PetController {
     @RequestMapping(path = "/pets/random", method = RequestMethod.GET)
     public List<Pet> randomPets() {
         return petDao.get3RandomPets();
+    }
+
+    @RequestMapping(path = "/pets/details/{id}", method = RequestMethod.PUT)
+    @PreAuthorize("isAuthenticated()")
+    public Pet updatePetListing (@PathVariable int id, @Valid @RequestBody Pet pet) {
+        try {
+            pet.setId(id);
+            return petDao.updatePetListing(pet);
+        } catch(DaoException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Pet not found.");
+        }
     }
 }

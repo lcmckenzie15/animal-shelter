@@ -120,6 +120,28 @@ public class JdbcPetDao implements PetDao {
         return threePets;
     }
 
+    @Override
+    public Pet updatePetListing(Pet pet) {
+        Pet updatedPet = null;
+        final String sql = "UPDATE pets\n" +
+                "\tSET species=?, gender=?, age=?, name=?, breed=?, pet_size=?, color=?, description=?, profile_pic=? \n" +
+                "\tWHERE pet_id=?;";
+        try {
+            int numberOfRowsAffected = jdbcTemplate.update(sql, pet.getSpecies(), pet.getGender(), pet.getAge(), pet.getName(),
+                    pet.getBreed(), pet.getPetSize(), pet.getColor(), pet.getDescription(), pet.getProfilePic() ,pet.getId());
+            if (numberOfRowsAffected == 0) {
+                throw new DaoException("Zero pets affected.");
+            } else {
+                updatedPet = getPetById(pet.getId());
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
+        return updatedPet;
+    }
+
     private Pet mapRowToPet(SqlRowSet rs) {
         Pet pet = new Pet();
         pet.setId(rs.getInt("pet_id"));
