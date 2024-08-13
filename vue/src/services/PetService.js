@@ -18,5 +18,9 @@ export default {
 
     getRandomPets() {
         return axios.get('/pets/random');
+    },
+
+    updatePetListing(id, pet) {
+        return axios.put(`/pets/details/${id}`, pet);
     }
 }
