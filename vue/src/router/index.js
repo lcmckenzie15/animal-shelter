@@ -5,7 +5,7 @@ import { useStore } from 'vuex'
 import HomeView from '../views/HomeView.vue';
 import LoginView from '../views/LoginView.vue';
 import LogoutView from '../views/LogoutView.vue';
-import RegisterView from '../views/RegisterView.vue';
+import ChangePasswordView from '../views/ChangePasswordView.vue';
 import VolunteerView from '../views/VolunteerView.vue';
 import BrowsePetsView from '../views/BrowsePetsView.vue';
 import PetDetailsView from '../views/PetDetailsView.vue';
@@ -80,11 +80,11 @@ const routes = [
     }
   },
   {
-    path: "/register",
-    name: "register",
-    component: RegisterView,
+    path: '/changepassword',
+    name: 'changedpassword',
+    component: ChangePasswordView,
     meta: {
-      requiresAuth: false
+      requiresAuth: true
     }
   },
   {

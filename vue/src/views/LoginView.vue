@@ -44,31 +44,35 @@ export default {
   },
   methods: {
     login() {
-      authService
-        .login(this.user)
-        .then(response => {
-          if (response.status == 200) {
-            this.$store.commit("SET_AUTH_TOKEN", response.data.token);
-            this.$store.commit("SET_USER", response.data.user);
-            if (!response.data.user.changedPassword) {
-              this.$router.push({ name: "register" });
-            } else {
-              this.$router.push("/");
-            }
-          }
-        })
-        .catch(error => {
-          const response = error.response;
+  authService.login(this.user)
+    .then(response => {
+      if (response.status === 200) {
+        this.$store.commit("SET_AUTH_TOKEN", response.data.token);
+        this.$store.commit("SET_USER", response.data.user);
 
-          if (response.status === 401) {
-            this.invalidCredentials = true;
-          }
-        });
-    },
+        if (!response.data.user.changedPassword) {
+          this.$router.push({ 
+            name: "changedpassword", 
+             
+          });
+        } else {
+          this.$router.push("/");
+        }
+      }
+    })
+    .catch(error => {
+      console.log (error)
+      const response = error.response;
+      if (response.status === 401) {
+        this.invalidCredentials = true;
+      }
+    });
+},
+
 
     changePassword() {
       if(changed_password == false) {
-        this.$router.push( {name: 'register'});
+        this.$router.push( {name: 'changedpassword'});
       }
       
 authService.updatePassword(this.user)

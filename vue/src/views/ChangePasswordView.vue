@@ -1,31 +1,26 @@
 <template>
   <div id="logo">
-<img src="../Pictures/logo.png" alt="logo">
-</div>
+    <img src="../Pictures/logo.png" alt="logo">
+  </div>
   <div id="register" class="text-center">
-    <form v-on:submit.prevent="register">
+    <form v-on:submit.prevent="changePassword">
       <h1>Please Change Your Password</h1>
       <div role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
       <div class="form-input-group">
-        <label for="username">Email:</label>
-        <input type="text" id="username" v-model="user.username" required autofocus />
-      </div>
-      <div class="form-input-group">
         <label for="password">Password:</label>
-        <input type="password" id="password" v-model="user.password" required />
+        <input type="password" id="password" v-model="request.password" required />
       </div>
       <div class="form-input-group">
         <label for="confirmPassword">Confirm Password:</label>
-        <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
+        <input type="password" id="confirmPassword" v-model="request.confirmPassword" required />
       </div>
-      <button type="submit" @click="register">Update</button>
+      <button type="submit">Update</button>
+
     </form>
   </div>
 </template>
-
-
 
 <script>
 import authService from '../services/AuthService';
@@ -33,30 +28,30 @@ import authService from '../services/AuthService';
 export default {
   data() {
     return {
-      user: {
-        username: '',
+      request: {
         password: '',
         confirmPassword: '',
-        role: 'user',
-        
       },
       registrationErrors: false,
-      registrationErrorMsg: 'There were problems registering this user.',
+      registrationErrorMsg: 'There were problems updating the password.',
+      username: '', 
     };
   },
+ 
   methods: {
-    register() {
-      if (this.user.password != this.user.confirmPassword) {
+    changePassword() {
+      if (this.request.password !== this.request.confirmPassword) {
         this.registrationErrors = true;
         this.registrationErrorMsg = 'Password & Confirm Password do not match.';
-      } else {
-        authService
-          .register(this.user)
+        return;
+      } 
+      
+        authService.updatePassword(this.request)
           .then((response) => {
-            if (response.status == 201) {
+            if (response.status === 200) {
               this.$router.push({
-                path: '/login',
-                query: { registration: 'success' },
+                path: '/',
+               
               });
             }
           })
@@ -65,16 +60,18 @@ export default {
             this.registrationErrors = true;
             if (response.status === 400) {
               this.registrationErrorMsg = 'Bad Request: Validation Errors';
+            } else {
+              this.registrationErrorMsg = 'An error occurred. Please try again.';
             }
           });
       }
     },
     clearErrors() {
+      console.log('Clearing errors'); // Debugging line
       this.registrationErrors = false;
-      this.registrationErrorMsg = 'There were problems registering this user.';
+      this.registrationErrorMsg = 'There were problems updating the password.';
     },
-  },
-};
+  };
 </script>
 
 <style scoped>

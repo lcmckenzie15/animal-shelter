@@ -7,17 +7,19 @@ import com.techelevator.model.*;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.techelevator.dao.UserDao;
 import com.techelevator.security.jwt.JWTFilter;
 import com.techelevator.security.jwt.TokenProvider;
+
+import java.security.Principal;
 
 @RestController
 @CrossOrigin
@@ -70,15 +72,35 @@ public class AuthenticationController {
         }
     }
 
-    @RequestMapping(path = "/register/{id}", method = RequestMethod.PUT )
-    public User updateUserPassword(@PathVariable int id, @Valid @RequestBody UserNew user) {
+    @RequestMapping(path = "/changepassword", method = RequestMethod.PUT)
+    @PreAuthorize("isAuthenticated()")
+    public User updateUserPassword(Principal principal, @Valid @RequestBody ChangePasswordRequest request) {
+        // Use the username from the URL path
         try {
-            user.setUserId(id);
-            return userDao.updatePassword(user);
-        } catch(DaoException e){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "password not found.");
+         User user = userDao.getUserByUsername(principal.getName());
+         if(!request.getPassword().equals(request.getConfirmPassword()) ){
+             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Passwords don't match");
+         }
+            User updatedUser = userDao.updatePassword(user, request);
+            return updatedUser;
+        } catch (DaoException e)  {
+           throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
     }
+
+
+
+
+
+    //    @RequestMapping(path = "/register/{username}", method = RequestMethod.PUT )
+//    public User updateUserPassword(@PathVariable String username, @Valid @RequestBody UserNew user) {
+//        try {
+//            user.setUsername(username);
+//            return userDao.updatePassword(user);
+//        } catch(DaoException e){
+//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "user not found.");
+//        }
+//    }
 
 }
 

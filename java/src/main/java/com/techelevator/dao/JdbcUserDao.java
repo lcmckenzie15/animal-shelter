@@ -3,7 +3,7 @@ package com.techelevator.dao;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import com.techelevator.model.UserNew;
+import com.techelevator.model.ChangePasswordRequest;
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.RegisterUserDto;
 
@@ -90,24 +90,54 @@ public class JdbcUserDao implements UserDao {
     }
 
     @Override
-    public User updatePassword(UserNew user) {
-        User newPassword = null;
-       final String sql = "UPDATE users SET password_hash = ?, changed_password = true WHERE user_id = ?";
-        String password_hash = new BCryptPasswordEncoder().encode(user.getPassword());
+    public User updatePassword(User user, ChangePasswordRequest request) {
+
+        final String sql = "UPDATE users SET password_hash = ?, changed_password = true WHERE user_id = ?";
+        String password_hash = new BCryptPasswordEncoder().encode(request.getPassword());
         try {
-            int numberOfRowsAffected = jdbcTemplate.update(sql, password_hash, user.getUserId());
+            int numberOfRowsAffected = jdbcTemplate.update(sql, password_hash, user.getId());
             if (numberOfRowsAffected == 0) {
                 throw new DaoException("Zero rows affected.");
             } else {
-                newPassword = getUserById(user.getUserId());
+                return getUserById(user.getId());
             }
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
         } catch (DataIntegrityViolationException e) {
             throw new DaoException("Data integrity violation", e);
         }
-        return newPassword;
-        }
+    }
+
+
+
+
+
+
+
+
+
+
+    //    @Override
+//    public User updatePassword(UserNew user) {
+//        User newPassword = null;
+//       final String sql = "UPDATE users SET password_hash = ?, changed_password = true WHERE username = ?";
+//        String password_hash = new BCryptPasswordEncoder().encode(user.getPassword());
+//        try {
+//            int numberOfRowsAffected = jdbcTemplate.update(sql, password_hash, user.getUsername());
+//            if (numberOfRowsAffected == 0) {
+//                throw new DaoException("Zero rows affected.");
+//            } else {
+//                newPassword = getUserByUsername(user.getUsername());
+//            }
+//        } catch (CannotGetJdbcConnectionException e) {
+//            throw new DaoException("Unable to connect to server or database", e);
+//        } catch (DataIntegrityViolationException e) {
+//            throw new DaoException("Data integrity violation", e);
+//        }
+//        return newPassword;
+//        }
+
+
 
 
 
