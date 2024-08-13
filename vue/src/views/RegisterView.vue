@@ -20,8 +20,7 @@
         <label for="confirmPassword">Confirm Password:</label>
         <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
       </div>
-      <button type="submit">Update</button>
-      <!-- <p id="login-btn">Already have an account?<router-link id="router-two" v-bind:to="{ name: 'login' }">Log in.</router-link></p> -->
+      <button type="submit" @click="register">Update</button>
     </form>
   </div>
 </template>
