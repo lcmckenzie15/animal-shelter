@@ -5,7 +5,9 @@
         <button class="go-back-button" @click="$router.push('/pets')">Back</button>
         <div class="image-container">
           <div class="adopted-overlay" v-if="pet.adopted">
-            <i class="fa-solid fa-heart"></i>
+            <!-- Apply inline styles to adjust size and position -->
+            <i class="fa-solid fa-heart"
+              style="color: rgb(252, 100, 100); position: absolute; top: 10px; right: 10px; font-size: 100px; transform: rotate(25deg);"></i>
             <span class="adopted-text">ADOPTED</span>
             <img :src="pet.profilePic" alt="Profile Picture" class="dog-pic" />
           </div>
@@ -65,6 +67,7 @@
               <th>Details</th>
             </tr>
           </thead>
+          <div class="table-body">
           <tbody>
             <tr>
               <td><strong>Age:</strong> {{ pet?.age }} years old</td>
@@ -85,6 +88,7 @@
               <td><strong>Description:</strong> {{ pet?.description }}</td>
             </tr>
           </tbody>
+        </div>
         </table>
         <div class="button-container">
           <button class="pet-adopt-button" v-on:click="handleAdoptClick">Adopt</button>
@@ -142,8 +146,17 @@ export default {
 </script>
 
 <style scoped>
-* {
-  font-family: 'Poppins', sans-serif;
+/* Scoped styles for everything else */
+
+.adopted-text {
+  color: white;
+  font-size: 18px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  top: 35px;
+  right: 13px;
+  transform: rotate(25deg);
 }
 
 .container {
@@ -175,7 +188,6 @@ export default {
   width: 100%;
   max-width: 500px;
   margin-top: 30px;
-  /* Add margin to lower the image */
 }
 
 .dog-pic,
@@ -238,6 +250,11 @@ export default {
   gap: 10px;
   margin-top: 20px;
 }
+
+tbody tr td{
+  padding: 10px 30px 10px 30px;
+}
+
 
 .pet-adopt-button,
 .pet-update-button {
