@@ -1,9 +1,7 @@
 <template>
-
   <div class="container" v-if="pet.adopted">
     <div class="row">
-      <div class="col">
-        <button class="go-back-button" @click="$router.push(`/pets`)">Back</button>
+      <div class="col image-col">
         <div class="image-container">
           <div class="adopted-overlay" v-if="pet.adopted">
             <i class="fa-solid fa-heart"></i>
@@ -12,10 +10,8 @@
           </div>
         </div>
       </div>
-      <div class="col">
+      <div class="col details-col">
         <h1 class="name-of-pet">{{ pet?.name }}</h1>
-      </div>
-      <div class="col">
         <table class="pet-stuff">
           <thead>
             <tr>
@@ -65,25 +61,24 @@
           </tbody>
         </table>
         <div class="button-container">
-          <button class="pet-adopt-button" v-on:click="handleAdoptClick" data-toggle="modal" data-target="#congratsModel">Adopt</button>
-          <button class="pet-update-button" @click="$router.push(`/pets/${pet.id}/edit`)" v-if="$store.state.token != ''">Update</button>
+          <button class="go-back-button" @click="$router.push(`/pets`)">Back</button>
+          <button class="pet-update-button" @click="$router.push(`/pets/${pet.id}/edit`)"
+            v-if="$store.state.token != ''">Update</button>
+          <button class="pet-adopt-button" v-on:click="handleAdoptClick" data-toggle="modal"
+            data-target="#congratsModel">Adopt</button>
         </div>
       </div>
     </div>
   </div>
   <div class="container" v-else>
     <div class="row">
-      <div class="col">
-        <button class="go-back-button" @click="$router.push(`/pets`)">Back</button>
+      <div class="col image-col">
         <div class="image-container">
           <img :src="pet.profilePic" alt="Profile Picture" class="dog-pic-no-adopt" />
-
         </div>
       </div>
-      <div class="col">
+      <div class="col details-col">
         <h1 class="name-of-pet">{{ pet?.name }}</h1>
-      </div>
-      <div class="col">
         <table class="pet-stuff">
           <thead>
             <tr>
@@ -133,8 +128,10 @@
           </tbody>
         </table>
         <div class="button-container">
+          <button class="go-back-button" @click="$router.push(`/pets`)">Back</button>
+          <button class="pet-update-button" @click="$router.push(`/pets/${pet.id}/edit`)"
+            v-if="$store.state.token != ''">Update</button>
           <button class="pet-adopt-button" v-on:click="handleAdoptClick">Adopt</button>
-          <button class="pet-update-button" @click="$router.push(`/pets/${pet.id}/edit`)" v-if="$store.state.token != ''">Update</button>
         </div>
       </div>
     </div>
@@ -171,45 +168,28 @@ export default {
     handleAdoptClick() {
       this.launchConfetti();
       this.adoptPet();
-      setTimeout(()=>{
+      setTimeout(() => {
         this.navigateToPets();
       }, 1000);
-      
+
     },
     launchConfetti() {
       confetti({
         particleCount: 100,
         spread: 70,
-        origin: {y: 0.6}
+        origin: { y: 0.6 }
       });
     }
 
   }
 }
-
-
-
 </script>
 
 <style scoped>
-.fa-heart {
-  color: rgb(252, 100, 100);
-  position: absolute;
-  top: 60px;
-  right: 20px;
-  font-size: 100px;
-  transform: rotate(25deg);
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
-.adopted-text {
-  color: white;
-  font-size: 18px;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  font-weight: bold;
-  top: 87px;
-  right: 22px;
-  transform: rotate(25deg);
+* {
+  font-family: 'Poppins', sans-serif;
 }
 
 .container {
@@ -218,8 +198,9 @@ export default {
 
 .row {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  align-items: center;
+  /* Align items vertically */
+  justify-content: space-between;
 }
 
 .col {
@@ -227,96 +208,94 @@ export default {
 }
 
 .image-col {
-  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
 .details-col {
-  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 600px;
+  margin-left: 20px;
 }
 
 .image-container {
   position: relative;
-  width: 500px;
-}
-
-.dog-pic {
   width: 100%;
-  height: auto;
-  border: solid #FF5722 5px;
-  border-radius: 25px;
-  object-fit: cover;
-  margin-top: 40px;
+  max-width: 600px;
 }
 
+.dog-pic,
 .dog-pic-no-adopt {
   width: 100%;
   height: auto;
   border: solid #FF5722 5px;
   border-radius: 25px;
   object-fit: cover;
-  margin-top: 40px;
 }
 
 .go-back-button {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: #FF5722;
+  color: white;
+  border-radius: 50px;
+  padding: 10px 20px;
+  border: none;
+}
+
+.pet-adopt-button,
+.pet-update-button {
   margin-top: 20px;
   cursor: pointer;
   transition: all 0.3s ease;
+  background-color: #FF5722;
+  color: white;
+  border-radius: 50px;
+  padding: 10px 20px;
+  border: none;
 }
 
-.go-back-button:hover {
-  color: #FF5722;
+.go-back-button:hover,
+.pet-adopt-button:hover,
+.pet-update-button:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   transform: translateY(-5px);
 }
 
 .name-of-pet {
   padding-top: 20px;
+  font-size: 36px;
+  font-weight: 700;
+  color: #FF5722;
+  text-align: center;
 }
 
 .pet-stuff {
-  border: 5px solid #607D8B;
   border-radius: 8px;
-  width: 500px;
+  width: 100%;
   margin-top: 30px;
-  background-color: #fff;
-  border-spacing: 0 10px;
-  font-size: 20px;
+  background-color: rgba(96, 125, 139, 0.1);
+  padding: 20px;
+  font-size: 18px;
   color: #263238;
 }
 
-.pet-stuff tr {
-  padding: 10px 0;
-  color: #263238;
-}
-
-.button-container {
-  display: flex;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.pet-adopt-button,
-.pet-update-button {
-  font-size: 20px;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.pet-adopt-button:hover,
-.pet-update-button:hover {
-  color: #FF5722;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  transform: translateY(-5px);
-}
-
-tr th {
-  border: solid 5px #607D8B;
+.pet-stuff th {
   text-align: center;
-  font-size: large;
+  font-size: 24px;
+  background-color: rgba(96, 125, 139, 0.4);
+  border-radius: 8px;
+  padding: 10px;
   color: #263238;
 }
 
-tbody tr {
+.pet-stuff td {
+  padding: 10px 0;
   font-weight: 600;
 }
 
@@ -324,17 +303,45 @@ tbody tr {
   height: 5px;
 }
 
-.spacer td {
-  background-color: #fff;
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-top: 20px;
 }
-body, html {
+
+.go-back-button,
+.pet-adopt-button,
+.pet-update-button {
+  margin: 0;
+  padding: 10px 20px;
+  height: 50px;
+  background-color: #FF5722;
+  color: white;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.go-back-button:hover,
+.pet-adopt-button:hover,
+.pet-update-button:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transform: translateY(-5px);
+}
+
+
+body,
+html {
   width: 100%;
   height: 100%;
-  }
+}
 
 .confetti {
   left: 0;
-  pointer-events: none ;
+  pointer-events: none;
   position: fixed;
   top: 0;
   transform: translate3d(0, 0, 0);
@@ -342,7 +349,6 @@ body, html {
   height: 100%;
   width: 100%;
 }
-
 
 .confetti-item {
   position: absolute;
@@ -354,11 +360,14 @@ body, html {
   0% {
     transform: translateY(-100%)
   }
-  95%{
+
+  95% {
     animation-timing-function: ease-in-out;
     transform: translateY(calc(100vh - 55%))
   }
+
   100% {
     transform: translateY(calc(150vh - 65%))
-  }}
+  }
+}
 </style>
