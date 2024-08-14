@@ -23,8 +23,8 @@ public class PetController {
     }
 
     @RequestMapping(path = "/pets", method = RequestMethod.GET)
-    public List<Pet> pets() {
-        return petDao.getPets();
+    public List<Pet> pets(@RequestParam(defaultValue = "0") int minage, @RequestParam(defaultValue = "99") int maxage) {
+        return petDao.getPets(minage, maxage);
     }
 
     @RequestMapping(path = "/pets/{id}", method = RequestMethod.GET)
