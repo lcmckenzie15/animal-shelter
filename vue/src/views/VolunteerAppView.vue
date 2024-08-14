@@ -7,9 +7,10 @@
                         <h3 class="text-center">Volunteer Application</h3>
                         <p class="text-center">Please fill in the form below.</p>
                         <section v-if="showSuccess">
-                            <div class="container">
-                                <strong>Success!</strong> Thank you for your application! It has been submitted to an
-                                administrator for evaluation.
+                            <div class="container" id="success-message">
+                                <h1><strong>Success!</strong></h1>
+                                <p>Thank you for your application! It has been submitted to an
+                                administrator for evaluation.</p>
                             </div>
                         </section>
 
@@ -140,18 +141,14 @@ body {
 
 .form-content .form-items {
     padding: 60px;
-    /* Increased padding to center contents */
     display: inline-block;
     width: 100%;
     min-width: 900px;
-    /* Increase form width */
     min-height: 700px;
-    /* Increase form height */
     border-radius: 10px;
     text-align: left;
     transition: all 0.4s ease;
     background-color: #607D8B;
-    /* Form background color */
 }
 
 .form-rounded {
@@ -163,17 +160,14 @@ body {
 .form-content h3 {
     color: #fff;
     text-align: center;
-    /* Center the title */
     font-size: 28px;
     font-weight: 600;
     margin-bottom: 20px;
-    /* Add space below the title */
 }
 
 .form-content p {
     color: #fff;
     text-align: center;
-    /* Center the subtitle */
     font-size: 17px;
     font-weight: 300;
     line-height: 20px;
@@ -187,7 +181,6 @@ body {
 .form-content input[type=date] {
     width: 100%;
     padding: 12px 20px;
-    /* Increase padding for form inputs */
     text-align: left;
     border: 0;
     outline: 0;
@@ -212,9 +205,7 @@ body {
 
 .btn-submit {
     background-color: #fff;
-    /* White background */
     color: #000;
-    /* Black text */
     border: 0;
     box-shadow: none;
 }
@@ -235,4 +226,32 @@ body {
 .valid-feedback {
     color: #2acc80;
 }
+
+#success-message {
+    color: #fff;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+}
+
+#success-message h1 {
+    font-size: 28px;
+    font-weight: 800;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#success-message h1::before {
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+#success-message p {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 0;
+}
+
 </style>
