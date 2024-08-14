@@ -12,6 +12,38 @@
     
     <h1 class="title">Available Pets</h1>
     
+   
+      <label for="filter1">Filter by Age: </label>
+      <select name="filter1" v-model="ageFilter" v-on:change="getPetsByParams">
+        <option value="all">All Ages</option>
+        <option value="A">0 - 2 years</option>
+        <option value="B">3 - 5 years</option>
+        <option value="C">6+ years</option>
+      </select>
+
+      <label for="filter2">Filter by Species: </label>
+      <select name="filter2" v-model="speciesFilter" v-on:change="getPetsByParams">
+        <option value="all">All Species</option>
+        <option value="cat">Cats</option>
+        <option value="dog">Dogs</option>
+      </select>
+
+      <label for="filter3">Filter by Gender: </label>
+      <select name="filter3" v-model="genderFilter" v-on:change="getPetsByParams">
+        <option value="all">All Genders</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+      
+      <label for="filter4">Filter by Size: </label>
+      <select name="filter4" v-model="sizeFilter" v-on:change="getPetsByParams">
+        <option value="all">All Sizes</option>
+        <option value="small">Small</option>
+        <option value="medium">Medium</option>
+        <option value="large">Large</option>
+        <option value="x-large">X-Large</option>
+      </select>
+
     <div class="pet-info">
       <PetCard
         class="pet-card"
@@ -39,8 +71,54 @@ export default {
   data() {
     return {
       pets: [],
-      invalidCredentials: false
+      invalidCredentials: false,
+      params: {},
+      ageFilter: '',
+      speciesFilter: '',
+      genderFilter: '',
+      sizeFilter: ''
     };
+  },
+  methods: {
+    getPetsByParams() {
+      this.params = {};
+      if (this.ageFilter === 'A') {
+        this.params.minage = 0;
+        this.params.maxage = 2;
+      } else if (this.ageFilter === 'B') {
+        this.params.minage = 3;
+        this.params.maxage = 5;
+      } else if (this.ageFilter === 'C') {
+        this.params.minage = 6;
+      } 
+       
+      if (this.speciesFilter === 'cat') {
+        this.params.species = "cat";
+      } else if (this.speciesFilter === 'dog') {
+        this.params.species = "dog";
+      }
+
+      if (this.genderFilter === 'male') {
+        this.params.gender = "male";
+      } else if (this.genderFilter === 'female') {
+        this.params.gender = "female";
+      } 
+
+      if (this.sizeFilter === 'small') {
+        this.params.petSize = "small";
+      } else if (this.sizeFilter === 'medium') {
+        this.params.petSize = "medium";
+      } else if (this.sizeFilter === 'large') {
+        this.params.petSize = "large";
+      } else if (this.sizeFilter === 'x-large') {
+        this.params.petSize = "x-large"
+      }
+
+      petService.getPets(this.params).then ((response) =>{
+        this.pets = response.data;
+      });
+      
+    }
   },
   async mounted() {
     try {
