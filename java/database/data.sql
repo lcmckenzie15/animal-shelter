@@ -101,7 +101,7 @@ INSERT INTO pets(
 
 INSERT INTO pets(
 	species, gender, age, name, breed, pet_size, color, description, profile_pic, is_adopted)
-	VALUES ('Cat', 'female', 4, 'Molly', 'Unknown', 'Small', 'Black, White, Orange',
+	VALUES ('Cat', 'female', 9, 'Molly', 'Calico', 'Small', 'Black, White, Orange',
 			'Molly is a graceful and enchanting feline with a coat as soft as a cloud and eyes that shine with curiosity. She moves with a gentle elegance, often found lounging in sunlit spots or playfully pouncing on her favorite toys. With a serene demeanor and a penchant for cuddling, Molly is the perfect companion for quiet evenings and cozy moments. Her affectionate purrs and delicate headbutts are her way of showing love and appreciation. Whether she’s watching the world from a windowsill or curling up beside you, Molly adds a touch of warmth and charm to every day.',
 			'https://res.cloudinary.com/ddqchrxtm/image/upload/v1723648622/Molly_cat_qweas1.jpg', false);
 
@@ -113,7 +113,7 @@ INSERT INTO pets(
 
 INSERT INTO pets(
 	species, gender, age, name, breed, pet_size, color, description, profile_pic, is_adopted)
-	VALUES ('Cat', 'Female', 3, 'Persephone', 'Unknown', 'Medium', 'Gray',
+	VALUES ('Cat', 'Female', 8, 'Persephone', 'Sphnyx', 'Medium', 'Gray',
 			'Persephone is a stunning hairless cat with a sleek, smooth, and velvety skin that’s as soft as silk. Her elegant, refined appearance is complemented by large, expressive eyes that reveal her curious and playful nature. Despite her lack of fur, Persephone radiates warmth and affection, often curling up close to enjoy the coziness of a warm lap or sunlit spot. With a gentle and charming personality, she loves to be the center of attention, offering sweet purrs and delightful companionship. Persephone’s unique and graceful presence makes her an unforgettable and cherished friend.',
 			'https://res.cloudinary.com/ddqchrxtm/image/upload/v1723648625/Persephone_cat_zeazzt.jpg', false);
 
