@@ -107,7 +107,7 @@ public class JdbcPetDao implements PetDao {
                 "FROM pets\n" +
                 "WHERE is_adopted = false\n" +
                 "ORDER BY RANDOM()\n" +
-                "LIMIT 3;\n";
+                "LIMIT 6;\n";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
             while (results.next()){
