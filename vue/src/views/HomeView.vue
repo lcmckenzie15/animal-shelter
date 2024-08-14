@@ -79,8 +79,7 @@ p.homepage-text {
   padding: 0 100px;
   text-align: center;
   line-height: 1.7;
-}
-
+  }
 .carousel {
   width: 1000px;
   height: 400px;
