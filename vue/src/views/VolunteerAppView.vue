@@ -7,9 +7,10 @@
                         <h3 class="text-center">Volunteer Application</h3>
                         <p class="text-center">Please fill in the form below.</p>
                         <section v-if="showSuccess">
-                            <div class="container">
-                                <strong>Success!</strong> Thank you for your application! It has been submitted to an
-                                administrator for evaluation.
+                            <div class="container" id="success-message">
+                                <h1><strong>Success!</strong></h1>
+                                <p>Thank you for your application! It has been submitted to an
+                                administrator for evaluation.</p>
                             </div>
                         </section>
 
@@ -234,5 +235,10 @@ body {
 
 .valid-feedback {
     color: #2acc80;
+}
+
+#success-message > h1 > strong {
+    font-weight: 800;
+    text-align: center;
 }
 </style>
