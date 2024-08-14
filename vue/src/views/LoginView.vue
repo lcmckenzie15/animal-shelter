@@ -84,85 +84,116 @@ authService.updatePassword(this.user)
 };
 </script>
 
+
+
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
 :root {
-  --primary-color: #607D8B;
-
-  --secondary-color: #CFD8DC;
-
-  --accent-color: #FF5722;
-
-  --background-color: #ECEFF1;
-
-  --text-color: #263238;
-
-}
-
-#volunteer-btn #register{
-  color: #263238;
-  margin-left: 10px;
-}
-
-#volunteer-btn #register:hover{
-  text-decoration: underline;
-  color: #FF5722;
+  --primary-color: #4A90E2;
+  --secondary-color: #D0E2F2;
+  --accent-color: #F5A623;
+  --background-color: #F9F9F9;
+  --text-color: #333;
 }
 
 #logo {
   text-align: center;
-  margin-bottom: 10px; 
+  margin-bottom: 20px; 
 }
 
 img {
-  width: 600px;
+  width: 800px;
   height: auto;
+  margin-bottom: -100px;
 }
 
 #login {
   margin: 0 auto;
-  width: 300px;
-  font-size: 22px;
-  margin-top: -70px; 
-  padding-left: 26px;
+  width: 350px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: var(--background-color);
+  
 }
 
 h1 {
   color: var(--primary-color);
-  margin-bottom: 10px; 
-}
-
-button:hover {
-  color: #FF5722;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
-  transform: translateY(-5px);
+  margin-bottom: 30px;
+  font-size: 40px; 
+  text-align: center;
 }
 
 button {
- display: flex;
-margin-left: 95px;
-font-size: 20px;
-margin-top: 20px;
-margin-bottom: 10px;
-cursor: pointer; 
-  transition: all 0.3s ease; 
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  color: white;
+  background-color: #607d8b;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-top: 20px;
 }
 
+button:hover {
+  background-color: #FF5722;
+  transform: translateY(-2px);
+}
 
 .form-input-group {
   margin-bottom: 1rem;
   color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 label {
-  margin-right: 0.5rem;
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
 }
 
-#register {
-  color: var(--text-color);
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
 }
 
-.invalid {
-  color: red;
-  width: 400px;
+input:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 5px rgba(74, 144, 226, 0.3);
+}
+
+.alert {
+  color: #E74C3C;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+#volunteer-btn {
+  text-align: center;
+  font-size: 16px;
+}
+
+#volunteer-btn #register {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+#volunteer-btn #register:hover {
+  text-decoration: underline;
 }
 </style>
