@@ -173,6 +173,9 @@ export default {
 .image-container {
   position: relative;
   width: 100%;
+  max-width: 500px;
+  margin-top: 30px;
+  /* Add margin to lower the image */
 }
 
 .dog-pic,
