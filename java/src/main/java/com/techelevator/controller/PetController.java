@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.dao.PetDao;
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Pet;
+import org.apache.coyote.Request;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -23,8 +24,9 @@ public class PetController {
     }
 
     @RequestMapping(path = "/pets", method = RequestMethod.GET)
-    public List<Pet> pets(@RequestParam(defaultValue = "0") int minage, @RequestParam(defaultValue = "99") int maxage) {
-        return petDao.getPets(minage, maxage);
+    public List<Pet> pets(@RequestParam(defaultValue = "0") int minage, @RequestParam(defaultValue = "99") int maxage,
+                          @RequestParam(defaultValue = "%%") String species, @RequestParam(defaultValue = "%%") String gender, @RequestParam(defaultValue = "%%") String petSize) {
+        return petDao.getPets(minage, maxage, species, gender, petSize);
     }
 
     @RequestMapping(path = "/pets/{id}", method = RequestMethod.GET)
