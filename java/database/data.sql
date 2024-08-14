@@ -93,6 +93,24 @@ INSERT INTO pets(
 			'Meet Juniper, your chatty, sweet little companion with a big personality! This vocal furball loves to engage in lively conversations with her humans, always ready to share her thoughts. She’s a true foodie, delighting in every treat and meal, and she’s also a playful enthusiast when it comes to toys. Juniper’s charming mix of chatter, playfulness, and affection will keep you entertained and delighted every day!',
 			'https://res.cloudinary.com/dtennawyr/image/upload/v1723052942/Juniper_Cat_ez6iyp.jpg', false);
 
+INSERT INTO pets(
+	species, gender, age, name, breed, pet_size, color, description, profile_pic, is_adopted)
+	VALUES ('Dog', 'male', 2, 'JoJo', 'Labrador Retriever', 'Medium', 'Gold',
+			'Jojo is a playful and affectionate dog with a heart full of love and energy. This charming companion has a shiny, sleek coat and sparkling eyes that reflect a zest for life. Whether he’s chasing his favorite toy, cuddling up for some cozy snuggles, or greeting you with an enthusiastic wag of his tail, Jojo brings joy and warmth wherever he goes. His friendly nature makes him a perfect friend for both children and adults, and his boundless curiosity ensures that every day is an adventure. With Jojo by your side, you’ll always have a loyal and loving buddy to share life’s moments with.',
+			'https://res.cloudinary.com/ddqchrxtm/image/upload/v1723644877/JoJoDog_jewlnp.jpg', false);
+
+INSERT INTO pets(
+	species, gender, age, name, breed, pet_size, color, description, profile_pic, is_adopted)
+	VALUES ('Cat', 'female', 4, 'Molly', 'Unknown', 'Small', 'Mix',
+			'Molly is a graceful and enchanting feline with a coat as soft as a cloud and eyes that shine with curiosity. She moves with a gentle elegance, often found lounging in sunlit spots or playfully pouncing on her favorite toys. With a serene demeanor and a penchant for cuddling, Molly is the perfect companion for quiet evenings and cozy moments. Her affectionate purrs and delicate headbutts are her way of showing love and appreciation. Whether she’s watching the world from a windowsill or curling up beside you, Molly adds a touch of warmth and charm to every day.',
+			'https://res.cloudinary.com/ddqchrxtm/image/upload/v1723646022/Molly_cat_io0cuq.jpg', false);
+
+INSERT INTO pets(
+	species, gender, age, name, breed, pet_size, color, description, profile_pic, is_adopted)
+	VALUES ('Cat', 'female', 5, 'Elixir', 'Unknown', 'Small', 'Black',
+			'Exiler is a striking and mysterious cat with an air of intrigue and elegance. With a sleek, glossy coat and piercing eyes, Exiler commands attention and curiosity. This feline has a bold and independent spirit, often found exploring new nooks or observing the world from a high perch. Despite his enigmatic demeanor, Exiler has a soft spot for moments of quiet companionship and gentle affection. His unique personality and captivating presence make him a standout companion, bringing a touch of adventure and sophistication to every day.',
+			'https://res.cloudinary.com/ddqchrxtm/image/upload/v1723646187/Elixir_cat_g4drx7.jpg', false);
+
 COMMIT TRANSACTION;
 
 --INSERT INTO users (email,password_hash,role, phone_number, date_of_birth, first_name, last_name) VALUES ('user@te.net','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER', '123-456-7890', '2024-08-04', 'Test', 'User');
