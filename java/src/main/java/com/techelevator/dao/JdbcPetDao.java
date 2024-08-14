@@ -22,13 +22,15 @@ public class JdbcPetDao implements PetDao {
     }
 
     @Override
-    public List<Pet> getPets() {
+    public List<Pet> getPets(int minAge, int maxAge, String species, String gender, String petSize) {
         List<Pet> pets = new ArrayList<>();
         String sql = "SELECT pet_id, species, gender, age, name, breed, pet_size, color, description, profile_pic, is_adopted\n" +
                 "\tFROM pets " +
-                "ORDER BY name;";
+                "\nWHERE " +
+                "\n (age BETWEEN ? AND ?) AND (species ILIKE ?) AND (gender ILIKE ?) AND (pet_size ILIKE ?)" +
+                "\nORDER BY name;";
         try {
-            SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, minAge, maxAge, species, gender, petSize);
             while (results.next()) {
                 Pet pet = mapRowToPet(results);
                 pets.add(pet);
