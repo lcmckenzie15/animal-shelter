@@ -141,18 +141,14 @@ body {
 
 .form-content .form-items {
     padding: 60px;
-    /* Increased padding to center contents */
     display: inline-block;
     width: 100%;
     min-width: 900px;
-    /* Increase form width */
     min-height: 700px;
-    /* Increase form height */
     border-radius: 10px;
     text-align: left;
     transition: all 0.4s ease;
     background-color: #607D8B;
-    /* Form background color */
 }
 
 .form-rounded {
@@ -164,17 +160,14 @@ body {
 .form-content h3 {
     color: #fff;
     text-align: center;
-    /* Center the title */
     font-size: 28px;
     font-weight: 600;
     margin-bottom: 20px;
-    /* Add space below the title */
 }
 
 .form-content p {
     color: #fff;
     text-align: center;
-    /* Center the subtitle */
     font-size: 17px;
     font-weight: 300;
     line-height: 20px;
@@ -188,7 +181,6 @@ body {
 .form-content input[type=date] {
     width: 100%;
     padding: 12px 20px;
-    /* Increase padding for form inputs */
     text-align: left;
     border: 0;
     outline: 0;
@@ -213,9 +205,7 @@ body {
 
 .btn-submit {
     background-color: #fff;
-    /* White background */
     color: #000;
-    /* Black text */
     border: 0;
     box-shadow: none;
 }
@@ -237,9 +227,34 @@ body {
     color: #2acc80;
 }
 
-#success-message > h1 > strong {
+#success-message {
+    background-color: #2acc80;
+    color: #fff;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+    border: 2px solid #28a745;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#success-message h1 {
+    font-size: 28px;
     font-weight: 800;
     display: flex;
     justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
 }
+
+#success-message h1::before {
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+#success-message p {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 0;
+}
+
 </style>
