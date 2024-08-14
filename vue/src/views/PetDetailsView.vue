@@ -1,21 +1,20 @@
 <template>
-
   <div class="container" v-if="pet.adopted">
     <div class="row">
-      <div class="col">
-        <button class="go-back-button" @click="$router.push(`/pets`)">Back</button>
+      <div class="col image-col">
+        <button class="go-back-button" @click="$router.push('/pets')">Back</button>
         <div class="image-container">
           <div class="adopted-overlay" v-if="pet.adopted">
-            <i class="fa-solid fa-heart"></i>
+            <!-- Apply inline styles to adjust size and position -->
+            <i class="fa-solid fa-heart"
+              style="color: rgb(252, 100, 100); position: absolute; top: 10px; right: 10px; font-size: 100px; transform: rotate(25deg);"></i>
             <span class="adopted-text">ADOPTED</span>
             <img :src="pet.profilePic" alt="Profile Picture" class="dog-pic" />
           </div>
         </div>
       </div>
-      <div class="col">
+      <div class="col details-col">
         <h1 class="name-of-pet">{{ pet?.name }}</h1>
-      </div>
-      <div class="col">
         <table class="pet-stuff">
           <thead>
             <tr>
@@ -23,114 +22,73 @@
             </tr>
           </thead>
           <tbody>
-            <tr class="spacer">
-              <td></td>
-            </tr>
             <tr>
               <td><strong>Age:</strong> {{ pet?.age }} years old</td>
-            </tr>
-            <tr class="spacer">
-              <td></td>
             </tr>
             <tr>
               <td><strong>Breed:</strong> {{ pet?.breed }}</td>
             </tr>
-            <tr class="spacer">
-              <td></td>
-            </tr>
             <tr>
               <td><strong>Size:</strong> {{ pet?.petSize }}</td>
-            </tr>
-            <tr class="spacer">
-              <td></td>
             </tr>
             <tr>
               <td><strong>Gender:</strong> {{ pet?.gender }}</td>
             </tr>
-            <tr class="spacer">
-              <td></td>
-            </tr>
             <tr>
               <td><strong>Color:</strong> {{ pet?.color }}</td>
-            </tr>
-            <tr class="spacer">
-              <td></td>
             </tr>
             <tr>
               <td><strong>Description:</strong> {{ pet?.description }}</td>
             </tr>
-            <tr class="spacer">
-              <td></td>
-            </tr>
           </tbody>
         </table>
         <div class="button-container">
-          <button class="pet-adopt-button" v-on:click="handleAdoptClick" data-toggle="modal" data-target="#congratsModel">Adopt</button>
-          <button class="pet-update-button" @click="$router.push(`/pets/${pet.id}/edit`)" v-if="$store.state.token != ''">Update</button>
+          <button class="pet-adopt-button" v-on:click="handleAdoptClick" data-toggle="modal"
+            data-target="#congratsModel">Adopt</button>
+          <button class="pet-update-button" @click="$router.push('/pets/${pet.id}/edit')"
+            v-if="$store.state.token != ''">Update</button>
         </div>
       </div>
     </div>
   </div>
   <div class="container" v-else>
     <div class="row">
-      <div class="col">
-        <button class="go-back-button" @click="$router.push(`/pets`)">Back</button>
+      <div class="col image-col">
+        <button class="go-back-button" @click="$router.push('/pets')">Back</button>
         <div class="image-container">
           <img :src="pet.profilePic" alt="Profile Picture" class="dog-pic-no-adopt" />
-
         </div>
       </div>
-      <div class="col">
+      <div class="col details-col">
         <h1 class="name-of-pet">{{ pet?.name }}</h1>
-      </div>
-      <div class="col">
         <table class="pet-stuff">
           <thead>
             <tr>
               <th>Details</th>
             </tr>
           </thead>
+          <div class="table-body">
           <tbody>
-            <tr class="spacer">
-              <td></td>
-            </tr>
             <tr>
               <td><strong>Age:</strong> {{ pet?.age }} years old</td>
-            </tr>
-            <tr class="spacer">
-              <td></td>
             </tr>
             <tr>
               <td><strong>Breed:</strong> {{ pet?.breed }}</td>
             </tr>
-            <tr class="spacer">
-              <td></td>
-            </tr>
             <tr>
               <td><strong>Size:</strong> {{ pet?.petSize }}</td>
-            </tr>
-            <tr class="spacer">
-              <td></td>
             </tr>
             <tr>
               <td><strong>Gender:</strong> {{ pet?.gender }}</td>
             </tr>
-            <tr class="spacer">
-              <td></td>
-            </tr>
             <tr>
               <td><strong>Color:</strong> {{ pet?.color }}</td>
-            </tr>
-            <tr class="spacer">
-              <td></td>
             </tr>
             <tr>
               <td><strong>Description:</strong> {{ pet?.description }}</td>
             </tr>
-            <tr class="spacer">
-              <td></td>
-            </tr>
           </tbody>
+        </div>
         </table>
         <div class="button-container">
           <button class="pet-adopt-button" v-on:click="handleAdoptClick">Adopt</button>
@@ -171,35 +129,23 @@ export default {
     handleAdoptClick() {
       this.launchConfetti();
       this.adoptPet();
-      setTimeout(()=>{
+      setTimeout(() => {
         this.navigateToPets();
       }, 1000);
-      
     },
     launchConfetti() {
       confetti({
         particleCount: 100,
         spread: 70,
-        origin: {y: 0.6}
+        origin: { y: 0.6 }
       });
     }
-
   }
 }
-
-
-
 </script>
 
 <style scoped>
-.fa-heart {
-  color: rgb(252, 100, 100);
-  position: absolute;
-  top: 60px;
-  right: 20px;
-  font-size: 100px;
-  transform: rotate(25deg);
-}
+/* Scoped styles for everything else */
 
 .adopted-text {
   color: white;
@@ -207,8 +153,8 @@ export default {
   position: absolute;
   transform: translate(-50%, -50%);
   font-weight: bold;
-  top: 87px;
-  right: 22px;
+  top: 35px;
+  right: 13px;
   transform: rotate(25deg);
 }
 
@@ -218,8 +164,8 @@ export default {
 
 .row {
   display: flex;
-  flex-wrap: wrap;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .col {
@@ -228,137 +174,136 @@ export default {
 
 .image-col {
   flex: 1;
+  order: 1;
 }
 
 .details-col {
   flex: 2;
+  order: 2;
 }
 
 .image-container {
   position: relative;
-  width: 500px;
-}
-
-.dog-pic {
   width: 100%;
-  height: auto;
-  border: solid #FF5722 5px;
-  border-radius: 25px;
-  object-fit: cover;
-  margin-top: 40px;
+  max-width: 500px;
+  margin-top: 30px;
 }
 
+.dog-pic,
 .dog-pic-no-adopt {
   width: 100%;
   height: auto;
   border: solid #FF5722 5px;
   border-radius: 25px;
   object-fit: cover;
-  margin-top: 40px;
 }
 
 .go-back-button {
   margin-top: 20px;
   cursor: pointer;
+  background-color: #FF5722;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 10px 20px;
   transition: all 0.3s ease;
 }
 
 .go-back-button:hover {
-  color: #FF5722;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   transform: translateY(-5px);
 }
 
 .name-of-pet {
   padding-top: 20px;
+  font-size: 32px;
+  color: #FF5722;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 2px 2px #FFCCBC;
 }
 
 .pet-stuff {
-  border: 5px solid #607D8B;
-  border-radius: 8px;
-  width: 500px;
+  border-radius: 12px;
+  width: 100%;
   margin-top: 30px;
-  background-color: #fff;
+  background-color: rgba(96, 125, 139, 0.2);
   border-spacing: 0 10px;
   font-size: 20px;
   color: #263238;
+  padding: 20px;
 }
 
-.pet-stuff tr {
-  padding: 10px 0;
+.pet-stuff th {
+  background-color: rgba(96, 125, 139, 0.4);
+  border-radius: 8px;
+  text-align: center;
+  font-size: large;
+  padding: 10px;
   color: #263238;
 }
 
 .button-container {
   display: flex;
+  justify-content: center;
   gap: 10px;
   margin-top: 20px;
 }
 
+tbody tr td{
+  padding: 10px 30px 10px 30px;
+}
+
+
 .pet-adopt-button,
 .pet-update-button {
   font-size: 20px;
+  background-color: #FF5722;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 10px 20px;
   transition: all 0.3s ease;
   cursor: pointer;
 }
 
 .pet-adopt-button:hover,
 .pet-update-button:hover {
-  color: #FF5722;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   transform: translateY(-5px);
 }
 
-tr th {
-  border: solid 5px #607D8B;
-  text-align: center;
-  font-size: large;
-  color: #263238;
-}
-
-tbody tr {
-  font-weight: 600;
-}
-
-.spacer {
-  height: 5px;
-}
-
-.spacer td {
-  background-color: #fff;
-}
-body, html {
-  width: 100%;
-  height: 100%;
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
   }
 
-.confetti {
-  left: 0;
-  pointer-events: none ;
-  position: fixed;
-  top: 0;
-  transform: translate3d(0, 0, 0);
-  will-change: transform;
-  height: 100%;
-  width: 100%;
-}
-
-
-.confetti-item {
-  position: absolute;
-  transform: translate3d(0, 0, 0);
-  will-change: transform;
-}
-
-@keyframes confetti-fall {
-  0% {
-    transform: translateY(-100%)
+  .image-col {
+    order: 1;
   }
-  95%{
-    animation-timing-function: ease-in-out;
-    transform: translateY(calc(100vh - 55%))
+
+  .details-col {
+    order: 2;
   }
-  100% {
-    transform: translateY(calc(150vh - 65%))
-  }}
+
+  .dog-pic,
+  .dog-pic-no-adopt {
+    width: 100%;
+    height: auto;
+  }
+
+  .pet-stuff {
+    width: 100%;
+  }
+
+  .button-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .go-back-button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
 </style>

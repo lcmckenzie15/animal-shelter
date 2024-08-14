@@ -77,6 +77,13 @@ export default {
 </script>
 
 <style scoped>
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
 .volunteer-view {
   padding: 20px;
   font-family: Arial, sans-serif;

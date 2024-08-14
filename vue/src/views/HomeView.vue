@@ -18,9 +18,8 @@
               <a :href="'/pets/' + pet.id">
                 <img v-bind:src="pet.profilePic" alt="Pet Image" class="d-block w-100 img-fluid border">
               </a>
-              <div class="pet-info">
-                <p class="pet-name">{{ pet.name }}</p>
-                <p class="pet-age">Age: {{ pet.age }}</p>
+              <div class="pet-info rounded-pill">
+                <span class="pet-details">{{ pet.name }} - Age: {{ pet.age }}</span>
               </div>
             </div>
           </div>
@@ -134,26 +133,17 @@ p.homepage-text {
 
 .pet-info {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin-top: 10px;
 }
 
-.pet-name,
-.pet-age {
+.pet-details {
   font-size: 1.2rem;
   background-color: #FF5722;
   color: white;
-  padding: 5px 15px;
+  padding: 5px 20px;
   border-radius: 50px;
   display: inline-block;
-}
-
-.pet-name {
-  margin-right: auto;
-}
-
-.pet-age {
-  margin-left: auto;
 }
 </style>
