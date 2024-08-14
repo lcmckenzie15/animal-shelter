@@ -1,30 +1,32 @@
 <template>
   <div class="container-fluid p-5 text-dark text-center">
-    <h1>AdopTE</h1>
-    <p>Welcome to AdopTE, where every pet's journey to a loving home begins. 
-      Our mission is to unite compassionate individuals with animals in need through our comprehensive adoption services, 
-      engaging volunteer opportunities, and valuable resources. At AdopTE, 
+    <p class="homepage-text">
+      Welcome to AdopTE, where every pet's journey to a loving home begins.
+      Our mission is to unite compassionate individuals with animals in need through our comprehensive adoption
+      services, engaging volunteer opportunities, and valuable resources. At AdopTE,
       we're dedicated to ensuring that each furry friend finds a safe and joyful life.
-      Join us in making a positive impact, one adoption at a time.</p>
+      Join us in making a positive impact, one adoption at a time.
+    </p>
   </div>
 
-  
   <div class="d-flex justify-content-center">
-    
-    <div id="carousel1" class="carousel slide mx-2" data-bs-ride="carousel">
-      
-      <!-- <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carousel1" data-bs-slide-to="0"></button>
-        <button type="button" data-bs-target="#carousel1" data-bs-slide-to="1"></button>
-        <button type="button" data-bs-target="#carousel1" data-bs-slide-to="2"></button>
-      </div> -->
-      
+    <div id="carousel1" class="carousel slide mx-2" data-bs-ride="carousel" data-bs-interval="3000">
       <div class="carousel-inner">
-        <div class="carousel-item" v-for="(pet, index) in pets" :key="pet.id" :class="{'active': index == 0}">
-          <img v-bind:src="pet.profilePic" alt="Pet 1" class="d-block w-100">
+        <div class="carousel-item" v-for="(chunk, index) in chunkedPets" :key="index" :class="{ 'active': index == 0 }">
+          <div class="row">
+            <div class="col-4" v-for="pet in chunk" :key="pet.id">
+              <a :href="'/pets/' + pet.id">
+                <img v-bind:src="pet.profilePic" alt="Pet Image" class="d-block w-100 img-fluid border">
+              </a>
+              <div class="pet-info">
+                <p class="pet-name">{{ pet.name }}</p>
+                <p class="pet-age">Age: {{ pet.age }}</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      
+
       <button class="carousel-control-prev" type="button" data-bs-target="#carousel1" data-bs-slide="prev">
         <span class="carousel-control-prev-icon"></span>
       </button>
@@ -39,33 +41,121 @@
 import PetService from '../services/PetService';
 
 export default {
-  data(){
+  data() {
     return {
       pets: []
     }
   },
-  created(){
-    PetService.getRandomPets().then((response) =>  {
+  computed: {
+    chunkedPets() {
+      return this.pets.reduce((resultArray, item, index) => {
+        const chunkIndex = Math.floor(index / 3);
+        if (!resultArray[chunkIndex]) {
+          resultArray[chunkIndex] = [];
+        }
+        resultArray[chunkIndex].push(item);
+        return resultArray;
+      }, []);
+    }
+  },
+  created() {
+    PetService.getRandomPets().then((response) => {
       this.pets = response.data;
     });
-    
   }
 };
 </script>
 
 <style scoped>
-p {
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+p.homepage-text {
+  font-size: 1.5rem;
   font-weight: 600;
+  padding: 0 100px;
+  /* Increased padding */
+  text-align: center;
+  line-height: 1.7;
 }
 
 .carousel {
-  width: 350px;
-  height: 200px;
+  width: 1000px;
+  height: 400px;
+  position: relative;
 }
 
 .carousel img {
-  
-  height: 100%;
- 
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border: 3px solid #FF5722;
+  border-radius: 10px;
+  box-sizing: border-box;
+  transition: transform 0.3s ease;
+}
+
+.carousel img:hover {
+  transform: scale(1.05);
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255, 87, 34, 0.5);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 30%;
+  /* Adjusted to position arrows higher */
+  transform: translateY(-50%);
+  opacity: 1;
+  z-index: 2;
+}
+
+.carousel-control-prev {
+  left: -60px;
+}
+
+.carousel-control-next {
+  right: -60px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(1);
+  width: 25px;
+  height: 25px;
+}
+
+.pet-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.pet-name,
+.pet-age {
+  font-size: 1.2rem;
+  background-color: #FF5722;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 50px;
+  display: inline-block;
+}
+
+.pet-name {
+  margin-right: auto;
+}
+
+.pet-age {
+  margin-left: auto;
 }
 </style>
