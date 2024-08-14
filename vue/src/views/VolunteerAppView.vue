@@ -239,6 +239,7 @@ body {
 
 #success-message > h1 > strong {
     font-weight: 800;
-    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 </style>
