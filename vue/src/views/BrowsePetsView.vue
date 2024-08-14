@@ -12,7 +12,7 @@
     
     <h1 class="title">Available Pets</h1>
     
-   
+    <div class="filters-container">
       <label for="filter1">Filter by Age: </label>
       <select name="filter1" v-model="ageFilter" v-on:change="getPetsByParams">
         <option value="all">All Ages</option>
@@ -43,6 +43,7 @@
         <option value="large">Large</option>
         <option value="x-large">X-Large</option>
       </select>
+    </div>
 
     <div class="pet-info">
       <PetCard
@@ -141,7 +142,6 @@ export default {
   margin: 0 auto;
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-
 }
 
 #add-pet-button {
@@ -190,6 +190,42 @@ export default {
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
 }
 
+.filters-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.filters-container label {
+  margin-right: 10px;
+  font-size: 1.7rem;
+  color: #333; /* Make the label text stand out */
+}
+
+.filters-container select {
+  padding: 10px 20px;
+  font-size: 1.0rem; /* Slightly increased font size for better readability */
+  border: none;
+  border-radius: 50px; /* Rounded pill shape */
+  background: #607D8B; /* Distinct background color */
+  color: #fff; /* White text for contrast */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+.filters-container select:focus {
+  background: #607D8B; /* Slightly lighter background on focus */
+  outline: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.filters-container select option {
+  background: #607D8B; /* Ensure options match filter pill color */
+  color: #fff;
+}
+
 .pet-info {
   display: flex;
   flex-wrap: wrap;
@@ -200,7 +236,6 @@ export default {
 
 .pet-card {
   background: #ffffff;
- 
   overflow: hidden;
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
   cursor: pointer;
@@ -237,21 +272,19 @@ export default {
 
 .pet-card:hover .pet-image {
   transform: scale(1.1);
-  filter: brightness(1.2); /* Optional: add some brightness to enhance the effect */
+  filter: brightness(1.2);
 }
 
 .pet-image {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  border: 4px solid transparent; /* Adjust the border width if necessary */
-  border-image: linear-gradient(to right, #FF5722, #FF7043); /* Gradient from one color to another */
-  border-image-slice: 1; /* Make the gradient apply to the border */
-  border-image-width: 4px; /* Set the border-image-width to match the border-width */
+  border: 4px solid transparent;
+  border-image: linear-gradient(to right, #FF5722, #FF7043);
+  border-image-slice: 1;
+  border-image-width: 4px;
   transition: transform 0.3s, filter 0.3s;
 }
-
-
 
 .pet-card:hover .pet-image {
   transform: scale(1.1);
@@ -260,7 +293,6 @@ export default {
 .pet-details {
   padding: 20px;
   text-align: center;
-
   width: 100%;
 }
 
