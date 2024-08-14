@@ -92,8 +92,7 @@
         </table>
         <div class="button-container">
           <button class="pet-adopt-button" v-on:click="handleAdoptClick">Adopt</button>
-          <button class="pet-update-button" @click="$router.push('/pets/${pet.id}/edit')"
-            v-if="$store.state.token != ''">Update</button>
+          <button class="pet-update-button" @click="$router.push(`/pets/${pet.id}/edit`)" v-if="$store.state.token != ''">Update</button>
         </div>
       </div>
     </div>
