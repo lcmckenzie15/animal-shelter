@@ -228,13 +228,10 @@ body {
 }
 
 #success-message {
-    background-color: #2acc80;
     color: #fff;
     padding: 20px;
     margin: 20px 0;
     border-radius: 10px;
-    border: 2px solid #28a745;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 #success-message h1 {
