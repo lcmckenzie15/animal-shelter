@@ -77,7 +77,6 @@ p.homepage-text {
   font-size: 1.5rem;
   font-weight: 600;
   padding: 0 100px;
-  /* Increased padding */
   text-align: center;
   line-height: 1.7;
 }
@@ -113,7 +112,6 @@ p.homepage-text {
   align-items: center;
   position: absolute;
   top: 30%;
-  /* Adjusted to position arrows higher */
   transform: translateY(-50%);
   opacity: 1;
   z-index: 2;
