@@ -66,7 +66,7 @@ body {
     text-align: center;
     color: #607D8B;
     margin-top: 50px;
-    margin-bottom: 50px; /* Reduced margin to bring content closer to the top */
+    margin-bottom: 50px; 
     font-size: 38px;
     font-weight: 600;
 }
@@ -76,14 +76,14 @@ body {
     height: 100%;
     background-color: #152733;
     overflow: hidden;
-    margin: 0; /* Reset margin */
-    padding: 0; /* Reset padding */
+    margin: 0;
+    padding: 0; 
 }
 
 .title {
     text-align: center;
     color: #fff;
-    margin: 20px 0; /* Reduced margin to bring content closer to the top */
+    margin: 20px 0;
     font-size: 28px;
     font-weight: 600;
 }
@@ -91,9 +91,9 @@ body {
 .container {
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Align items to the top */
-    min-height: calc(100vh - 60px); /* Adjust height to account for title */
-    padding: 0 10px; /* Add some horizontal padding */
+    align-items: flex-start; 
+    min-height: calc(100vh - 60px);
+    padding: 0 10px; 
 }
 
 .list-container {
@@ -103,7 +103,7 @@ body {
     width: 100%;
     max-width: 900px;
     overflow: hidden;
-    margin-top: 20px; /* Add margin-top to separate from the title */
+    margin-top: 20px; 
 }
 
 .list-header,

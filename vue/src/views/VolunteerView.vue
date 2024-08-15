@@ -122,7 +122,7 @@ h2 {
 .card {
   background-color: #FFFFFF;
   border-radius: 8px;
-  box-shadow: 0 10px 20px rgba(4, 11, 104, 0.4); /* Darker orange shadow */
+  box-shadow: 0 10px 20px rgba(4, 11, 104, 0.4); 
   padding: 20px;
   width: 300px;
   transition: transform 0.3s, box-shadow 0.3s;
@@ -130,7 +130,7 @@ h2 {
 
 .card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 15px 25px rgba(136, 37, 7, 0.6); /* Darker orange shadow on hover */
+  box-shadow: 0 15px 25px rgba(136, 37, 7, 0.6); 
 }
 
 .card h4 {

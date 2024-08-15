@@ -1,9 +1,4 @@
 <template>
-    <!-- <div class="alert alert-danger alert-dismissible" v-if="showError">
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        <strong>Error!</strong> Please check that all fields are completed.
-    </div> -->
-    
     <div class="form-body">
         <div class="row">
             <div class="form-holder">
@@ -141,7 +136,6 @@ export default {
         submitPet() {
             if (this.pet.species=='' || this.pet.gender=='' || this.pet.age==0 || this.pet.name=='' 
                 || this.pet.breed=='' || this.pet.petSize=='' || this.pet.color=='' || this.pet.profilePic==''){
-                    // window.location.reload();
                     this.showError=true;
                     return
                 } 

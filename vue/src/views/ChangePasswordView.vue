@@ -67,7 +67,7 @@ export default {
     }
   },
   clearErrors() {
-    console.log('Clearing errors'); // Debugging line
+    console.log('Clearing errors'); 
     this.registrationErrors = false;
     this.registrationErrorMsg = 'There were problems updating the password.';
   },
@@ -103,7 +103,7 @@ img {
 #register {
   margin: 0 auto;
   width: 350px;
-  /* Adjust width if needed */
+
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -142,13 +142,13 @@ button:hover {
 
 .form-input-group {
   width: 100%;
-  /* Ensure inputs take up full width of container */
+  
   margin-bottom: 1rem;
   color: var(--text-color);
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* Center the contents horizontally */
+
 }
 
 label {
@@ -159,9 +159,9 @@ label {
 
 input {
   width: 100%;
-  /* Make input fields take full width of .form-input-group */
+
   max-width: 300px;
-  /* Constrain the maximum width of the input fields */
+
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;

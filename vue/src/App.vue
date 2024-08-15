@@ -28,10 +28,8 @@
     </div>
 
     <footer class="text-center text-white mt-auto" style="background-color: #CFD8DC;">
-      <!-- Grid container -->
       <div class="container pt-2">
         <section class="mb-2">
-          <!--social media icons-->
           <a class="btn btn-link btn-floating btn-lg m-1" href="#!" role="button" data-mdb-ripple-color="dark">
             <i class="fab fa-facebook-f fa-1x" style="color: #3b5998;"></i>
           </a>
@@ -57,7 +55,6 @@
           </a>
         </section>
       </div>
-      <!-- Copyright -->
       <div class="text-center text-light p-3" style="background-color: #607D8B;">
         TechElevator © 2024 Copyright
       </div>

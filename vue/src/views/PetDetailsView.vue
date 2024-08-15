@@ -5,7 +5,6 @@
         <button class="go-back-button" @click="$router.push('/pets')">Back</button>
         <div class="image-container">
           <div class="adopted-overlay" v-if="pet.adopted">
-            <!-- Apply inline styles to adjust size and position -->
             <i class="fa-solid fa-heart"
               style="color: rgb(252, 100, 100); position: absolute; top: 10px; right: 10px; font-size: 100px; transform: rotate(25deg);"></i>
             <span class="adopted-text">ADOPTED</span>
@@ -145,7 +144,7 @@ export default {
 </script>
 
 <style scoped>
-/* Scoped styles for everything else */
+
 
 .adopted-text {
   color: white;

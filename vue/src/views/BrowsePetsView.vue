@@ -72,7 +72,6 @@ export default {
   data() {
     return {
       pets: [],
-      invalidCredentials: false,
       params: {},
       ageFilter: '',
       speciesFilter: '',
@@ -122,14 +121,9 @@ export default {
     }
   },
   async mounted() {
-    try {
       const response = await petService.getPets();
       console.log('Fetched pets:', response.data);
-      this.pets = response.data;
-    } catch (error) {
-      console.error('Error fetching pets:', error);
-      this.invalidCredentials = true;
-    }
+      this.pets = response.data; 
   }
 };
 </script>
@@ -208,28 +202,28 @@ export default {
 .filters-container label {
   margin-right: 10px;
   font-size: 1.7rem;
-  color: #333; /* Make the label text stand out */
+  color: #333; 
 }
 
 .filters-container select {
   padding: 10px 20px;
-  font-size: 1.0rem; /* Slightly increased font size for better readability */
+  font-size: 1.0rem; 
   border: none;
-  border-radius: 50px; /* Rounded pill shape */
-  background: #607D8B; /* Distinct background color */
-  color: #fff; /* White text for contrast */
+  border-radius: 50px; 
+  background: #607D8B; 
+  color: #fff; 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
 }
 
 .filters-container select:focus {
-  background: #607D8B; /* Slightly lighter background on focus */
+  background: #607D8B; 
   outline: none;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .filters-container select option {
-  background: #607D8B; /* Ensure options match filter pill color */
+  background: #607D8B; 
   color: #fff;
 }
 

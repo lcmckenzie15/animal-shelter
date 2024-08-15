@@ -79,7 +79,7 @@ transform: rotate(25deg);
   bottom: 0;
   width: 100%;
   background-color: #ff561e;
-  /* background: rgb(250, 139, 105); */
+ 
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
 }

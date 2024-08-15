@@ -90,17 +90,5 @@ public class AuthenticationController {
 
 
 
-
-
-    //    @RequestMapping(path = "/register/{username}", method = RequestMethod.PUT )
-//    public User updateUserPassword(@PathVariable String username, @Valid @RequestBody UserNew user) {
-//        try {
-//            user.setUsername(username);
-//            return userDao.updatePassword(user);
-//        } catch(DaoException e){
-//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "user not found.");
-//        }
-//    }
-
 }
 
