@@ -123,6 +123,9 @@ INSERT INTO pets(
 			'Aiden is a lovable and spirited dog with a heart full of enthusiasm and joy. His warm, expressive eyes and wagging tail make every interaction a delight. Whether he’s bounding through the park, playing fetch, or snuggling up beside you on the couch, Aiden’s infectious energy and affectionate nature shine through. He’s such a good dog, always eager to please and bring a smile to your face. With his friendly demeanor and unwavering loyalty, Aiden is the perfect companion for adventures and quiet moments alike.',
 			'https://res.cloudinary.com/ddqchrxtm/image/upload/v1723648766/AidenDog_1_fzyglq.png', false);
 
+INSERT INTO registration(email, phone_number, date_of_birth, first_name, last_name)
+VALUES ('jd@te.net', '444-555-7777', '2004-01-01', 'John', 'Douglas');
+
 COMMIT TRANSACTION;
 
 --INSERT INTO users (email,password_hash,role, phone_number, date_of_birth, first_name, last_name) VALUES ('user@te.net','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER', '123-456-7890', '2024-08-04', 'Test', 'User');
